@@ -8,6 +8,9 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
+const addGasFee = 3000000000;
+const mintPrice = "1"; // matic 단위
+
 const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 
 function App() {
@@ -29,47 +32,27 @@ function App() {
       console.log(error);
     }
   };
-  const connectWallet = async () => {
-    getAccount();
-    console.log("connect");
-  };
 
   const onClickMint = async () => {
     try {
       if (!account) return;
 
+      const mintPriceWei = await web3.utils.toWei(mintPrice);
+
       const alch = createAlchemyWeb3(alchemy_privateKeyHttps);
       alch.eth.getMaxPriorityFeePerGas().then((tip) => {
         alch.eth.getBlock("pending").then((block) => {
           const baseFee = Number(block.baseFeePerGas);
-          const max = Number(tip) + baseFee - 1 + 3000000000;
+          const max = Number(tip) + baseFee - 1 + addGasFee;
 
           hcNFTContract.methods.mintNFT().send({
             from: account,
-            value: 1000000000000000000,
+            value: mintPriceWei,
             maxFeePerGas: max,
-            maxPriorityFeePerGas: Number(tip) + 3000000000,
-            // gasLimit: 300000,
-            // gas: 8000000,
+            maxPriorityFeePerGas: Number(tip) + addGasFee,
           });
         });
       });
-
-      // if (response.status) {
-      //   const balanceLength = await mintAnimalTokenContract.methods
-      //     .balanceOf(account)
-      //     .call();
-
-      //   const animalTokenId = await mintAnimalTokenContract.methods
-      //     .tokenOfOwnerByIndex(account, parseInt(balanceLength.length, 10) - 1)
-      //     .call();
-
-      //   const animalType = await mintAnimalTokenContract.methods
-      //     .animalTypes(animalTokenId)
-      //     .call();
-
-      //   setNewAnimalType(animalType);
-      // }
     } catch (error) {
       console.error(error);
     }
@@ -82,9 +65,6 @@ function App() {
   return (
     <div className="App">
       <div className="Mint-container">
-        <Button variant="success" onClick={connectWallet}>
-          Connect
-        </Button>
         <Button variant="success" onClick={onClickMint}>
           Mint
         </Button>
