@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+}
+
+.Mint-container {
+  background-color: bisque;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
