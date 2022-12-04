@@ -15,6 +15,7 @@ const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 
 function App() {
   const [account, setAccount] = useState("");
+  const [remainingSupply, setRemainingSupply] = useState(0);
 
   const getAccount = async () => {
     try {
@@ -62,12 +63,54 @@ function App() {
     getAccount();
   }, [account]);
 
+  useEffect(() => {
+    try {
+      if (!account) return;
+
+      hcNFTContract.methods
+        .totalSupply()
+        .call()
+        .then(async (totalSupply) => {
+          const totalNFTcount = await hcNFTContract.methods
+            .totalNFTcount()
+            .call();
+
+          const remainSupply = totalNFTcount - totalSupply;
+
+          setRemainingSupply(remainSupply);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
   return (
     <div className="App">
-      <div className="Mint-container">
-        <Button variant="success" onClick={onClickMint}>
-          Mint
-        </Button>
+      <div className="Header"></div>
+      <div className="Main-container">
+        <div className="Mint-container">
+          <div className="MintInfo">
+            <div className="MintingRemaining">
+              <span>NFT 잔여수량</span>
+              <span>{remainingSupply}</span>
+            </div>
+            <div className="MintingPrice">
+              <span>가격</span>
+              <div className="MintingPrice-price">
+                <span>
+                  <img src="https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png"></img>
+                </span>
+                <span> {mintPrice} Matic</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="MintButton-wrapper">
+            <Button variant="success" onClick={onClickMint}>
+              Mint
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );
