@@ -1,12 +1,10 @@
+@import "./css/home.css";
+
 .App {
   min-height: 100vh;
 }
 
-.Header {
-  background-color: aliceblue;
-  min-height: 5vh;
-}
-.Main-container {
+.MintPage__Main-container {
   background-color: bisque;
   min-height: 90vh;
   display: flex;
@@ -14,7 +12,7 @@
   justify-content: center;
 }
 
-.Mint-container {
+.MintPage__Mint-container {
   background-color: whitesmoke;
   border-radius: 20px;
   width: 600px;
@@ -24,44 +22,44 @@
   justify-content: flex-start;
 }
 
-.MintInfo {
+.MintPage__MintInfo {
   display: flex;
   justify-content: space-around;
   margin-top: 100px;
 }
 
-.MintingRemaining {
+.MintPage__MintingRemaining {
   display: flex;
   flex-direction: column;
 }
-.MintingRemaining span:first-child {
+.MintPage__MintingRemaining span:first-child {
   font-size: 15px;
   margin-bottom: 20px;
   font-weight: 600;
   opacity: 0.7;
 }
 
-.MintingRemaining span:last-child {
+.MintPage__MintingRemaining span:last-child {
   font-size: 20px;
   font-weight: 700;
 }
 
-.MintingPrice > span {
+.MintPage__MintingPrice > span {
   font-size: 15px;
   font-weight: 600;
   opacity: 0.7;
 }
 
-.MintingPrice-price {
+.MintPage__MintingPrice-price {
   margin-top: 20px;
 }
 
-.MintingPrice-price span {
+.MintPage__MintingPrice-price span {
   font-size: 20px;
   font-weight: 700;
 }
 
-.MintingPrice-price img {
+.MintPage__MintingPrice-price img {
   position: relative;
   bottom: 1px;
   /* margin-right: -1px; */
@@ -69,13 +67,13 @@
   height: 25px;
 }
 
-.MintButton-wrapper {
+.MintPage__MintButton-wrapper {
   margin-top: 50px;
   display: flex;
   justify-content: center;
 }
 
-.MintButton-wrapper button {
+.MintPage__MintButton-wrapper button {
   padding: 10px 120px;
   font-size: 30px;
   text-decoration: none;
