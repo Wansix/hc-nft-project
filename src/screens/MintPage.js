@@ -18,24 +18,7 @@ export const MintPage = (props) => {
   const [mintPrice, setMintPrice] = useState("1"); //matic 단위
   const [viewMintPrice, setViewMintPrice] = useState("1");
   const [mintAmount, setMintAmount] = useState(1);
-  const [maxMintAmount, setMaxMintAmount] = useState(1);
-
-  const getAccount = async () => {
-    try {
-      // console.log(window.ethereum);
-      if (window.ethereum) {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        // console.log(accounts);
-        setAccount(accounts[0]);
-      } else {
-        alert("Install Metamask!!");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [maxMintAmount, setMaxMintAmount] = useState(3);
 
   const getMintPrice = async () => {
     const _mintPrice = await hcNFTContract.methods.mintPrice().call();
@@ -92,14 +75,8 @@ export const MintPage = (props) => {
     return isWhiteList;
   };
 
-  //   useEffect(() => {
-  //     getAccount();
-  //   }, [account]);
-
   useEffect(() => {
     try {
-      if (!account) return;
-
       hcNFTContract.methods
         .totalSupply()
         .call()
