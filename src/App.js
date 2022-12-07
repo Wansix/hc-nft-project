@@ -8,10 +8,19 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <MintPage></MintPage> */}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Mint" element={<MintPage />} />
+          <Route path="/Mint-test" element={<MintPage stage="test" />} />
+          <Route
+            path="/Mint-whitelist1"
+            element={<MintPage stage="whitelist1" />}
+          />
+          <Route
+            path="/Mint-whitelist2"
+            element={<MintPage stage="whitelist2" />}
+          />
+          <Route path="/Mint-public1" element={<MintPage stage="public1" />} />
+          <Route path="/Mint-public2" element={<MintPage stage="public2" />} />
         </Routes>
       </div>
     </Router>

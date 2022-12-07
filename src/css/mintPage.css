@@ -1,0 +1,70 @@
+.MintPage__Main-container {
+  background-color: black;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MintPage__Mint-container {
+  background-color: beige;
+  border-radius: 20px;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.MintPage__MintInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.MintPage__MintAmount {
+  display: flex;
+  background-color: grey;
+  width: 200px;
+  padding: 10px;
+  justify-content: space-around;
+  color: white;
+}
+
+.MintPage__MintAmount-button {
+  position: relative;
+  background-color: black;
+  opacity: 0.5;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.MintPage__MintAmount-button-minus span {
+  position: absolute;
+  font-size: 40px;
+  font-weight: bold;
+  top: -9px;
+  left: 16px;
+}
+
+.MintPage__MintAmount-button-plus span {
+  position: absolute;
+  font-size: 37px;
+  font-weight: bold;
+  top: -6px;
+  left: 12px;
+}
+
+.MintPage__MintAmount-amount {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.MintPage__MintButton-wrapper {
+  margin-top: 20px;
+}

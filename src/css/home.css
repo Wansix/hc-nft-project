@@ -6,8 +6,7 @@
 }
 
 .Home-maincontainer {
-  /* display: flex;
-  justify-content: center; */
+  position: relative;
   width: 1600px;
   height: 900px;
   background-repeat: no-repeat;

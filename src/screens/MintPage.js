@@ -8,13 +8,15 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const addGasFee = 3000000000;
-const mintPrice = "1"; // matic 단위
 
 const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 
-export const MintPage = () => {
+export const MintPage = (props) => {
   const [account, setAccount] = useState("");
   const [remainingSupply, setRemainingSupply] = useState(0);
+  const [mintPrice, setMintPrice] = useState("0.1"); //matic 단위
+  const [mintAmount, setMintAmount] = useState(1);
+  const [maxMintAmount, setMaxMintAmount] = useState(1);
 
   const getAccount = async () => {
     try {
@@ -58,6 +60,17 @@ export const MintPage = () => {
     }
   };
 
+  const onClickMinus = () => {
+    if (mintAmount == 1) return;
+    const amount = mintAmount - 1;
+    setMintAmount(amount);
+  };
+  const onClickPlus = () => {
+    if (mintAmount >= maxMintAmount) return;
+    const amount = mintAmount + 1;
+    setMintAmount(amount);
+  };
+
   useEffect(() => {
     getAccount();
   }, [account]);
@@ -87,18 +100,28 @@ export const MintPage = () => {
     <div className="MintPage__Main-container">
       <div className="MintPage__Mint-container">
         <div className="MintPage__MintInfo">
-          <div className="MintPage__MintingRemaining">
-            <span>NFT 잔여수량</span>
-            <span>{remainingSupply}</span>
+          <div>Amount</div>
+          <div>{remainingSupply}</div>
+          <div>
+            <span>{mintPrice} MATIC </span>
+            <span>PER </span>
+            <span>1 NFT </span>
+            <span>(Excluding gas fees)</span>
           </div>
-          <div className="MintPage__MintingPrice">
-            <span>가격</span>
-            <div className="MintPage__MintingPrice-price">
-              <span>
-                <img src="https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png"></img>
-              </span>
-              <span> {mintPrice} Matic</span>
-            </div>
+        </div>
+        <div className="MintPage__MintAmount">
+          <div
+            className="MintPage__MintAmount-button MintPage__MintAmount-button-minus"
+            onClick={onClickMinus}
+          >
+            <span>-</span>
+          </div>
+          <div className="MintPage__MintAmount-amount">{mintAmount}</div>
+          <div
+            className="MintPage__MintAmount-button MintPage__MintAmount-button-plus"
+            onClick={onClickPlus}
+          >
+            <span>+</span>
           </div>
         </div>
 

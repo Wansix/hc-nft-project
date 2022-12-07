@@ -1,85 +1,9 @@
 @import "./css/home.css";
+@import "./css/mintPage.css";
+@import "./css/walletConnect.css";
 
 .App {
+  background-color: black;
   min-height: 100vh;
-}
-
-.MintPage__Main-container {
-  background-color: bisque;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.MintPage__Mint-container {
-  background-color: whitesmoke;
-  border-radius: 20px;
-  width: 600px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.MintPage__MintInfo {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 100px;
-}
-
-.MintPage__MintingRemaining {
-  display: flex;
-  flex-direction: column;
-}
-.MintPage__MintingRemaining span:first-child {
-  font-size: 15px;
-  margin-bottom: 20px;
-  font-weight: 600;
-  opacity: 0.7;
-}
-
-.MintPage__MintingRemaining span:last-child {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.MintPage__MintingPrice > span {
-  font-size: 15px;
-  font-weight: 600;
-  opacity: 0.7;
-}
-
-.MintPage__MintingPrice-price {
-  margin-top: 20px;
-}
-
-.MintPage__MintingPrice-price span {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.MintPage__MintingPrice-price img {
   position: relative;
-  bottom: 1px;
-  /* margin-right: -1px; */
-  width: 25px;
-  height: 25px;
-}
-
-.MintPage__MintButton-wrapper {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-}
-
-.MintPage__MintButton-wrapper button {
-  padding: 10px 120px;
-  font-size: 30px;
-  text-decoration: none;
-  color: #fff;
-  background-color: rgba(34, 139, 34, 0.9);
-  opacity: 0.9;
-  border-radius: 5px;
-  text-align: center;
 }
