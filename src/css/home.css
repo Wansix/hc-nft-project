@@ -7,10 +7,10 @@
 
 .Home-maincontainer {
   position: relative;
-  width: 1900px;
-  height: 950px;
+  /* width: 1900px;
+  height: 950px; */
   background-repeat: no-repeat;
-  background-size: cover;
+  /* background-size: cover; */
 }
 
 .Home-maincontainer__nav {
