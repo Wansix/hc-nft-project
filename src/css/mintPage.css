@@ -6,38 +6,67 @@
 
 .MintPage__Main-container {
   background-color: black;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .MintPage__Mint-container {
-  background-color: beige;
-  border-radius: 20px;
-  width: 600px;
-  height: 500px;
+  position: relative;
+  width: 1600px;
+  height: 1200px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow: hidden;
 }
 
 .MintPage__MintInfo {
+  position: absolute;
+  /* background-color: aqua; */
+  left: 500px;
+  top: 100px;
+  width: 600px;
+
+  /* margin-top: 100px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   font-family: "GmarketSansTTFBold", serif;
+  color: white;
 }
 
-.MintPage__MintAmount {
+.MintPage__MintInfo-AmountFont {
+  font-size: 50px;
+}
+
+.MintPage__MintInfo-RemainingSupply {
+  margin-top: -10px;
+  font-size: 70px;
+}
+.MintPage__MintInfo-price {
+  font-size: 25px;
+}
+
+.MintPage__MintInfo-price_grey {
+  font-weight: 100;
+  opacity: 0.5;
+  font-size: 20px;
+}
+
+.MintPage__MintAmountBox {
+  position: absolute;
+  top: 350px;
   display: flex;
-  background-color: grey;
-  width: 200px;
-  padding: 10px;
+  background-color: gray;
+  width: 220px;
+  padding: 20px 5px;
+
   justify-content: space-around;
   color: white;
+  border-radius: 20px;
 }
 
 .MintPage__MintAmount-button {
@@ -73,5 +102,15 @@
 }
 
 .MintPage__MintButton-wrapper {
-  margin-top: 20px;
+  position: absolute;
+  top: 500px;
+  width: 200px;
+  height: 170px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  /* background-color: beige; */
 }

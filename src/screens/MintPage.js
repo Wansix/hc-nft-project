@@ -120,18 +120,25 @@ export const MintPage = (props) => {
 
   return (
     <div className="MintPage__Main-container">
-      <div className="MintPage__Mint-container">
+      <div
+        className="MintPage__Mint-container"
+        style={{ backgroundImage: "url(./MintingPageBackground.png)" }}
+      >
         <div className="MintPage__MintInfo">
-          <div>AMOUNT</div>
-          <div>{remainingSupply}</div>
-          <div>
+          <div className="MintPage__MintInfo-AmountFont">AMOUNT</div>
+          <div className="MintPage__MintInfo-RemainingSupply">
+            {remainingSupply}
+          </div>
+          <div className="MintPage__MintInfo-price">
             <span>{viewMintPrice} MATIC </span>
-            <span>PER </span>
+            <span className="MintPage__MintInfo-price_grey">PER </span>
             <span>1 NFT </span>
-            <span>(Excluding gas fees)</span>
+            <span className="MintPage__MintInfo-price_grey">
+              (Excluding gas fees)
+            </span>
           </div>
         </div>
-        <div className="MintPage__MintAmount">
+        <div className="MintPage__MintAmountBox">
           <div
             className="MintPage__MintAmount-button MintPage__MintAmount-button-minus"
             onClick={onClickMinus}
@@ -147,10 +154,8 @@ export const MintPage = (props) => {
           </div>
         </div>
 
-        <div className="MintPage__MintButton-wrapper">
-          <Button variant="success" onClick={onClickMint}>
-            Mint
-          </Button>
+        <div className="MintPage__MintButton-wrapper" onClick={onClickMint}>
+          <img src="minting_button.png"></img>
         </div>
       </div>
     </div>
