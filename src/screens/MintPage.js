@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import { hcNFTContract, web3 } from "../contracts/index";
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+import WalletConnect from "../components/WalletConnect";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -91,9 +92,9 @@ export const MintPage = (props) => {
     return isWhiteList;
   };
 
-  useEffect(() => {
-    getAccount();
-  }, [account]);
+  //   useEffect(() => {
+  //     getAccount();
+  //   }, [account]);
 
   useEffect(() => {
     try {
@@ -124,6 +125,7 @@ export const MintPage = (props) => {
         className="MintPage__Mint-container"
         style={{ backgroundImage: "url(./MintingPageBackground.png)" }}
       >
+        <WalletConnect></WalletConnect>
         <div className="MintPage__MintInfo">
           <div className="MintPage__MintInfo-AmountFont">AMOUNT</div>
           <div className="MintPage__MintInfo-RemainingSupply">
