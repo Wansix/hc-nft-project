@@ -14,7 +14,7 @@ const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 export const MintPage = (props) => {
   const [account, setAccount] = useState("");
   const [remainingSupply, setRemainingSupply] = useState(0);
-  const [mintPrice, setMintPrice] = useState("0.1"); //matic 단위
+  const [mintPrice, setMintPrice] = useState("1"); //matic 단위
   const [mintAmount, setMintAmount] = useState(1);
   const [maxMintAmount, setMaxMintAmount] = useState(1);
 
@@ -38,6 +38,12 @@ export const MintPage = (props) => {
   const onClickMint = async () => {
     try {
       if (!account) return;
+
+      const isWhiteList = await checkWhiteLists();
+      if (isWhiteList == false) {
+        alert("It's not whitelist account");
+        return;
+      }
 
       const mintPriceWei = await web3.utils.toWei(mintPrice);
 
@@ -69,6 +75,11 @@ export const MintPage = (props) => {
     if (mintAmount >= maxMintAmount) return;
     const amount = mintAmount + 1;
     setMintAmount(amount);
+  };
+
+  const checkWhiteLists = async () => {
+    const isWhiteList = await hcNFTContract.methods.whitelist(account).call();
+    return isWhiteList;
   };
 
   useEffect(() => {
