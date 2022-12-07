@@ -2,50 +2,53 @@
   display: flex;
   justify-content: center;
   background-color: black;
-  height: 100vh;
 }
 
 .Home-maincontainer {
   position: relative;
-  /* width: 1900px;
-  height: 950px; */
+  background-color: black;
+  width: 1280px;
+  height: 960px;
   background-repeat: no-repeat;
   /* background-size: cover; */
 }
 
 .Home-maincontainer__nav {
-  margin-top: 380px;
-  height: 200px;
-  width: 100vw;
+  margin-top: 440px;
+  height: 120px;
+  width: 100%;
+  /* opacity: 0.5; */
+  /* background-color: beige; */
 
   z-index: 100;
   display: flex;
   justify-content: flex-start;
 }
 .Home-maincontainer__nav-button {
+  /* background-color: aqua; */
   position: absolute;
-  height: 200px;
-  width: 240px;
+  height: 120px;
+  width: 150px;
   display: flex;
   justify-content: center;
 }
 .Home-maincontainer__nav-button img {
-  height: 200px;
-  width: 240px;
+  height: 100%;
+  width: 100%;
 }
 
 .Home-maincontainer__nav-button:first-child {
-  margin-left: 170px;
+  margin-left: 255px;
 }
 
 .Home-maincontainer__nav-button:nth-child(2) {
-  margin-left: 510px;
+  margin-left: 460px;
 }
 
 .Home-maincontainer__nav-button:nth-child(3) {
-  margin-left: 850px;
+  margin-left: 670px;
 }
 
 .Home-maincontainer__nav-button:last-child {
-  margin-left: 1190px;
+  margin-left: 875px;
 }

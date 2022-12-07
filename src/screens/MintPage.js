@@ -15,6 +15,7 @@ export const MintPage = (props) => {
   const [account, setAccount] = useState("");
   const [remainingSupply, setRemainingSupply] = useState(0);
   const [mintPrice, setMintPrice] = useState("1"); //matic 단위
+  const [viewMintPrice, setViewMintPrice] = useState("1");
   const [mintAmount, setMintAmount] = useState(1);
   const [maxMintAmount, setMaxMintAmount] = useState(1);
 
@@ -35,6 +36,14 @@ export const MintPage = (props) => {
     }
   };
 
+  const getMintPrice = async () => {
+    const _mintPrice = await hcNFTContract.methods.mintPrice().call();
+    // console.log("mint_price : ", _mintPrice);
+    setMintPrice(_mintPrice);
+    const _viewMintPrice = _mintPrice / 10 ** 18;
+    setViewMintPrice(_viewMintPrice);
+  };
+
   const onClickMint = async () => {
     try {
       if (!account) return;
@@ -45,7 +54,7 @@ export const MintPage = (props) => {
         return;
       }
 
-      const mintPriceWei = await web3.utils.toWei(mintPrice);
+      //   const mintPriceWei = await web3.utils.toWei(mintPrice);
 
       const alch = createAlchemyWeb3(alchemy_privateKeyHttps);
       alch.eth.getMaxPriorityFeePerGas().then((tip) => {
@@ -55,7 +64,7 @@ export const MintPage = (props) => {
 
           hcNFTContract.methods.mintNFT().send({
             from: account,
-            value: mintPriceWei,
+            value: mintPrice,
             maxFeePerGas: max,
             maxPriorityFeePerGas: Number(tip) + addGasFee,
           });
@@ -101,6 +110,8 @@ export const MintPage = (props) => {
           const remainSupply = totalNFTcount - totalSupply;
 
           setRemainingSupply(remainSupply);
+
+          getMintPrice();
         });
     } catch (error) {
       console.error(error);
@@ -114,7 +125,7 @@ export const MintPage = (props) => {
           <div>AMOUNT</div>
           <div>{remainingSupply}</div>
           <div>
-            <span>{mintPrice} MATIC </span>
+            <span>{viewMintPrice} MATIC </span>
             <span>PER </span>
             <span>1 NFT </span>
             <span>(Excluding gas fees)</span>
