@@ -100,7 +100,7 @@ export const MintPage = (props) => {
     <div className="MintPage__Main-container">
       <div className="MintPage__Mint-container">
         <div className="MintPage__MintInfo">
-          <div>Amount</div>
+          <div>AMOUNT</div>
           <div>{remainingSupply}</div>
           <div>
             <span>{mintPrice} MATIC </span>
