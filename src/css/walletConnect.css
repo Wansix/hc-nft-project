@@ -1,6 +1,6 @@
 .WalletConnect {
   /* background-color: aqua; */
-  position: absolute;
+  position: fixed;
   right: 0px;
   top: 30px;
   width: 270px;
