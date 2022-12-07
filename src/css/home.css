@@ -15,8 +15,8 @@
 }
 
 .Home-maincontainer__nav {
-  margin-top: 440px;
-  height: 120px;
+  margin-top: 570px;
+  height: 160px;
   width: 100%;
 
   /* opacity: 0.5; */
@@ -29,8 +29,8 @@
 .Home-maincontainer__nav-button {
   /* background-color: aqua; */
   position: absolute;
-  height: 120px;
-  width: 150px;
+  height: 160px;
+  width: 200px;
   display: flex;
   justify-content: center;
 }
@@ -40,17 +40,17 @@
 }
 
 .Home-maincontainer__nav-button:first-child {
-  margin-left: 255px;
+  margin-left: 280px;
 }
 
 .Home-maincontainer__nav-button:nth-child(2) {
-  margin-left: 460px;
+  margin-left: 560px;
 }
 
 .Home-maincontainer__nav-button:nth-child(3) {
-  margin-left: 670px;
+  margin-left: 840px;
 }
 
 .Home-maincontainer__nav-button:last-child {
-  margin-left: 875px;
+  margin-left: 1120px;
 }
