@@ -5,7 +5,11 @@ export const UtilEventMenu = () => {
   return (
     <div className="UtilEventMenu">
       <Link to="/UtilEvent">
-        <img className="UtilEventMenuImg" src="utility_menu.png"></img>
+        <img
+          className="UtilEventMenuImg"
+          src="utility_menu.png"
+          alt="utilEventMenuImg"
+        ></img>
       </Link>
     </div>
   );

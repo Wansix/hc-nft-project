@@ -1,7 +1,6 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
-import { hcNFTContract, web, whitelistContract } from "../contracts/index";
+import { hcNFTContract, whitelistContract } from "../contracts/index";
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import WalletConnect from "../components/WalletConnect";
 import * as dotenv from "dotenv";
@@ -49,15 +48,15 @@ export const MintPage = (props) => {
   };
 
   const checkMintPhase = () => {
-    if (props.stage == "test") {
+    if (props.stage === "test") {
       setMintPagePhase(Phase.PUBLIC2);
-    } else if (props.stage == "whitelist1") {
+    } else if (props.stage === "whitelist1") {
       setMintPagePhase(Phase.WHITELIST1);
-    } else if (props.stage == "whitelist2") {
+    } else if (props.stage === "whitelist2") {
       setMintPagePhase(Phase.WHITELIST2);
-    } else if (props.stage == "public1") {
+    } else if (props.stage === "public1") {
       setMintPagePhase(Phase.PUBLIC1);
-    } else if (props.stage == "public2") {
+    } else if (props.stage === "public2") {
       setMintPagePhase(Phase.PUBLIC2);
     }
     // console.log("mintPhase", mintPagePhase);
@@ -80,13 +79,13 @@ export const MintPage = (props) => {
         return;
       }
 
-      if (mintPagePhase != contractPhase) {
+      if (mintPagePhase !== contractPhase) {
         alert("민팅 가능 Stage가 아닙니다.");
         return;
       }
 
       const isWhiteList = await checkWhiteLists();
-      if (isWhiteList == false) {
+      if (isWhiteList === false) {
         alert("It's not whitelist account");
         return;
       }
@@ -113,7 +112,7 @@ export const MintPage = (props) => {
   };
 
   const onClickMinus = () => {
-    if (mintAmount == 1) return;
+    if (mintAmount === 1) return;
     const amount = mintAmount - 1;
     setMintAmount(amount);
   };
@@ -142,16 +141,16 @@ export const MintPage = (props) => {
     // console.log("usingPublicWhitelist2", usingPublicWhitelist2);
     // console.log("phase", contractPhase);
 
-    if (contractPhase == Phase.WHITELIST1) {
+    if (contractPhase === Phase.WHITELIST1) {
       response = isWhiteList[WhitelistAddress.WHITELIST1];
     }
-    if (contractPhase == Phase.WHITELIST2) {
+    if (contractPhase === Phase.WHITELIST2) {
       response = isWhiteList[WhitelistAddress.WHITELIST2];
     }
-    if (contractPhase == Phase.PUBLIC1 && usingPublicWhitelist1 == true) {
+    if (contractPhase === Phase.PUBLIC1 && usingPublicWhitelist1 === true) {
       response = isWhiteList[WhitelistAddress.PUBLIC1];
     }
-    if (contractPhase == Phase.PUBLIC2 && usingPublicWhitelist2 == true) {
+    if (contractPhase === Phase.PUBLIC2 && usingPublicWhitelist2 === true) {
       response = isWhiteList[WhitelistAddress.PUBLIC2];
     }
 
@@ -162,19 +161,19 @@ export const MintPage = (props) => {
     try {
       let remainSupply;
       if (
-        mintPagePhase == Phase.WHITELIST1 ||
-        mintPagePhase == Phase.WHITELIST2
+        mintPagePhase === Phase.WHITELIST1 ||
+        mintPagePhase === Phase.WHITELIST2
       ) {
         remainSupply = await hcNFTContract.methods
           .whitelistSaleAvailableAmount()
           .call();
       }
-      if (mintPagePhase == Phase.PUBLIC1) {
+      if (mintPagePhase === Phase.PUBLIC1) {
         remainSupply = await hcNFTContract.methods
           .public1SaleAvailableAmount()
           .call();
       }
-      if (mintPagePhase == Phase.PUBLIC2) {
+      if (mintPagePhase === Phase.PUBLIC2) {
         remainSupply = await hcNFTContract.methods
           .public2SaleAvailableAmount()
           .call();
@@ -186,14 +185,39 @@ export const MintPage = (props) => {
     }
   };
 
+  const checkMaxMintAmount = async () => {
+    try {
+      let saleLimit;
+      if (
+        mintPagePhase === Phase.WHITELIST1 ||
+        mintPagePhase === Phase.WHITELIST2
+      ) {
+        saleLimit = await hcNFTContract.methods.whitelistSaleLimit().call();
+      }
+      if (mintPagePhase === Phase.PUBLIC1) {
+        saleLimit = await hcNFTContract.methods.public1SaleLimit().call();
+      }
+      if (mintPagePhase === Phase.PUBLIC2) {
+        saleLimit = await hcNFTContract.methods.public2SaleLimit().call();
+      }
+
+      setMaxMintAmount(saleLimit);
+    } catch (error) {
+      console.log("checkMaxMintAmount", error);
+    }
+  };
+
   useEffect(() => {
     getMintPrice();
     checkRemainAmount();
+    checkMaxMintAmount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mintPagePhase]);
 
   useEffect(() => {
     checkContractPhase();
     checkMintPhase();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -234,7 +258,7 @@ export const MintPage = (props) => {
         </div>
 
         <div className="MintPage__MintButton-wrapper" onClick={onClickMint}>
-          <img src="minting_button.png"></img>
+          <img src="minting_button.png" alt="minting_button"></img>
         </div>
       </div>
     </div>

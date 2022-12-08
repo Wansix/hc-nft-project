@@ -1,19 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { hcNFTContract, web3 } from "../contracts/index";
-import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import * as dotenv from "dotenv";
 
 dotenv.config();
 
-const addGasFee = 3000000000;
-
-const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
-
 export const WalletConnect = (props) => {
   const [account, setAccount] = useState("");
-  const [imgSrc, setImgSrc] = useState("connect_wallet.png");
   const [viewAccount, setViewAccount] = useState("");
+
+  const imgSrc = "connect_wallet.png";
 
   const getAccount = async () => {
     try {
@@ -59,6 +54,7 @@ export const WalletConnect = (props) => {
         className="WallectConnectImg"
         src={imgSrc}
         onClick={connectWallet}
+        alt="walletConnect"
       ></img>
       {viewAccount}
     </div>
