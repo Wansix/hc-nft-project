@@ -10,7 +10,7 @@ const addGasFee = 3000000000;
 
 const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 
-export const WalletConnect = () => {
+export const WalletConnect = (props) => {
   const [account, setAccount] = useState("");
   const [imgSrc, setImgSrc] = useState("connect_wallet.png");
   const [viewAccount, setViewAccount] = useState("");
@@ -30,6 +30,7 @@ export const WalletConnect = () => {
         const backAccount = tempAccount.substr(-5);
         const tempViewAccount = frontAccount + "......" + backAccount;
         setViewAccount(tempViewAccount);
+        props.setAccountFunction(tempAccount);
 
         document.querySelector(".WallectConnectImg").style.display = "none";
       } else {

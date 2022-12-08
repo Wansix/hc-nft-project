@@ -1,12 +1,27 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
-import { hcNFTContract, web3 } from "../contracts/index";
+import { hcNFTContract, web, whitelistContract } from "../contracts/index";
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import WalletConnect from "../components/WalletConnect";
 import * as dotenv from "dotenv";
 
 dotenv.config();
+const Phase = {
+  INIT: 0,
+  WHITELIST1: 1,
+  WHITELIST2: 2,
+  PUBLIC1: 3,
+  PUBLIC2: 4,
+  DONE: 5,
+};
+
+const WhitelistAddress = {
+  WHITELIST1: 0,
+  WHITELIST2: 1,
+  PUBLIC1: 2,
+  PUBLIC2: 3,
+};
 
 const addGasFee = 3000000000;
 
@@ -15,13 +30,43 @@ const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 export const MintPage = (props) => {
   const [account, setAccount] = useState("");
   const [remainingSupply, setRemainingSupply] = useState(0);
-  const [mintPrice, setMintPrice] = useState("1"); //matic 단위
-  const [viewMintPrice, setViewMintPrice] = useState("1");
+  const [mintPrice, setMintPrice] = useState("0"); //matic 단위
+  const [viewMintPrice, setViewMintPrice] = useState("0");
   const [mintAmount, setMintAmount] = useState(1);
   const [maxMintAmount, setMaxMintAmount] = useState(3);
+  const [mintPagePhase, setMintPagePhase] = useState(Phase.INIT);
+  const [contractPhase, setContractPhase] = useState(Phase.INIT);
+
+  const setAccountFunction = (_address) => {
+    setAccount(_address);
+  };
+
+  const checkContractPhase = async () => {
+    const currentPhase = await hcNFTContract.methods.currentPhase().call();
+    setContractPhase(currentPhase);
+
+    // console.log("currentPhase", currentPhase);
+  };
+
+  const checkMintPhase = () => {
+    if (props.stage == "test") {
+      setMintPagePhase(Phase.PUBLIC2);
+    } else if (props.stage == "whitelist1") {
+      setMintPagePhase(Phase.WHITELIST1);
+    } else if (props.stage == "whitelist2") {
+      setMintPagePhase(Phase.WHITELIST2);
+    } else if (props.stage == "public1") {
+      setMintPagePhase(Phase.PUBLIC1);
+    } else if (props.stage == "public2") {
+      setMintPagePhase(Phase.PUBLIC2);
+    }
+    // console.log("mintPhase", mintPagePhase);
+  };
 
   const getMintPrice = async () => {
-    const _mintPrice = await hcNFTContract.methods.mintPrice().call();
+    const _mintPrice = await hcNFTContract.methods
+      .mintPriceList(mintPagePhase)
+      .call();
     // console.log("mint_price : ", _mintPrice);
     setMintPrice(_mintPrice);
     const _viewMintPrice = _mintPrice / 10 ** 18;
@@ -30,7 +75,15 @@ export const MintPage = (props) => {
 
   const onClickMint = async () => {
     try {
-      if (!account) return;
+      if (!account) {
+        alert("지갑을 연결해주세요.");
+        return;
+      }
+
+      if (mintPagePhase != contractPhase) {
+        alert("민팅 가능 Stage가 아닙니다.");
+        return;
+      }
 
       const isWhiteList = await checkWhiteLists();
       if (isWhiteList == false) {
@@ -71,30 +124,77 @@ export const MintPage = (props) => {
   };
 
   const checkWhiteLists = async () => {
-    const isWhiteList = await hcNFTContract.methods.whitelist(account).call();
-    return isWhiteList;
+    const isWhiteList = await whitelistContract.methods
+      .whitelists(account)
+      .call();
+
+    const usingPublicWhitelist1 = await hcNFTContract.methods
+      .usingPublicWhitelist1()
+      .call();
+
+    const usingPublicWhitelist2 = await hcNFTContract.methods
+      .usingPublicWhitelist2()
+      .call();
+
+    let response = true;
+    // console.log(isWhiteList);
+    // console.log("usingPublicWhitelist1", usingPublicWhitelist1);
+    // console.log("usingPublicWhitelist2", usingPublicWhitelist2);
+    // console.log("phase", contractPhase);
+
+    if (contractPhase == Phase.WHITELIST1) {
+      response = isWhiteList[WhitelistAddress.WHITELIST1];
+    }
+    if (contractPhase == Phase.WHITELIST2) {
+      response = isWhiteList[WhitelistAddress.WHITELIST2];
+    }
+    if (contractPhase == Phase.PUBLIC1 && usingPublicWhitelist1 == true) {
+      response = isWhiteList[WhitelistAddress.PUBLIC1];
+    }
+    if (contractPhase == Phase.PUBLIC2 && usingPublicWhitelist2 == true) {
+      response = isWhiteList[WhitelistAddress.PUBLIC2];
+    }
+
+    return response;
+  };
+
+  const checkRemainAmount = async () => {
+    try {
+      let remainSupply;
+      if (
+        mintPagePhase == Phase.WHITELIST1 ||
+        mintPagePhase == Phase.WHITELIST2
+      ) {
+        remainSupply = await hcNFTContract.methods
+          .whitelistSaleAvailableAmount()
+          .call();
+      }
+      if (mintPagePhase == Phase.PUBLIC1) {
+        remainSupply = await hcNFTContract.methods
+          .public1SaleAvailableAmount()
+          .call();
+      }
+      if (mintPagePhase == Phase.PUBLIC2) {
+        remainSupply = await hcNFTContract.methods
+          .public2SaleAvailableAmount()
+          .call();
+      }
+
+      setRemainingSupply(remainSupply);
+    } catch (error) {
+      console.log("checkRmainAmountError", error);
+    }
   };
 
   useEffect(() => {
-    try {
-      hcNFTContract.methods
-        .totalSupply()
-        .call()
-        .then(async (totalSupply) => {
-          const totalNFTcount = await hcNFTContract.methods
-            .totalNFTcount()
-            .call();
+    getMintPrice();
+    checkRemainAmount();
+  }, [mintPagePhase]);
 
-          const remainSupply = totalNFTcount - totalSupply;
-
-          setRemainingSupply(remainSupply);
-
-          getMintPrice();
-        });
-    } catch (error) {
-      console.error(error);
-    }
-  });
+  useEffect(() => {
+    checkContractPhase();
+    checkMintPhase();
+  }, []);
 
   return (
     <div className="MintPage__Main-container">
@@ -102,7 +202,7 @@ export const MintPage = (props) => {
         className="MintPage__Mint-container"
         style={{ backgroundImage: "url(./MintingPageBackground.png)" }}
       >
-        <WalletConnect></WalletConnect>
+        <WalletConnect setAccountFunction={setAccountFunction}></WalletConnect>
         <div className="MintPage__MintInfo">
           <div className="MintPage__MintInfo-AmountFont">AMOUNT</div>
           <div className="MintPage__MintInfo-RemainingSupply">

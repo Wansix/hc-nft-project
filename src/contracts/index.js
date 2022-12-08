@@ -2,6 +2,13 @@ import Web3 from "web3";
 
 const hcNFTContractAbi = [
   {
+    inputs: [],
+    name: "advancePhase",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "string",
@@ -19,9 +26,9 @@ const hcNFTContractAbi = [
         type: "string",
       },
       {
-        internalType: "uint256",
-        name: "_totalNFTcount",
-        type: "uint256",
+        internalType: "address",
+        name: "_whitelistContractAddress",
+        type: "address",
       },
     ],
     stateMutability: "nonpayable",
@@ -96,6 +103,13 @@ const hcNFTContractAbi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "backPhase",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -109,10 +123,30 @@ const hcNFTContractAbi = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_amount",
+        type: "uint256",
+      },
+    ],
+    name: "batchMintNFT_Owner",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "mintNFT",
     outputs: [],
     stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "mintNFT_Owner",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -203,6 +237,19 @@ const hcNFTContractAbi = [
     inputs: [
       {
         internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "setAdmin",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
         name: "operator",
         type: "address",
       },
@@ -233,12 +280,30 @@ const hcNFTContractAbi = [
   {
     inputs: [
       {
+        internalType: "enum MintHCProject.Phase",
+        name: "phase",
+        type: "uint8",
+      },
+      {
         internalType: "uint256",
         name: "_mintPrice",
         type: "uint256",
       },
     ],
     name: "setMintPrice",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_notRevealedURI",
+        type: "string",
+      },
+    ],
+    name: "setNotRevealURI",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -259,12 +324,30 @@ const hcNFTContractAbi = [
   {
     inputs: [
       {
+        internalType: "uint256",
+        name: "_name",
+        type: "uint256",
+      },
+      {
+        internalType: "bool",
+        name: "_use",
+        type: "bool",
+      },
+    ],
+    name: "setUsingPublicWhitelist",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "address",
-        name: "_whitelistAddress",
+        name: "_whitelistContractAddress",
         type: "address",
       },
     ],
-    name: "setWhitelist",
+    name: "setWhitelistContract",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -334,6 +417,25 @@ const hcNFTContractAbi = [
     inputs: [
       {
         internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "admin",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
         name: "owner",
         type: "address",
       },
@@ -344,6 +446,19 @@ const hcNFTContractAbi = [
         internalType: "uint256",
         name: "",
         type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "currentPhase",
+    outputs: [
+      {
+        internalType: "enum MintHCProject.Phase",
+        name: "",
+        type: "uint8",
       },
     ],
     stateMutability: "view",
@@ -361,6 +476,19 @@ const hcNFTContractAbi = [
     outputs: [
       {
         internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "hcProjectWhitelists",
+    outputs: [
+      {
+        internalType: "contract HCProjectWhitelists",
         name: "",
         type: "address",
       },
@@ -432,8 +560,14 @@ const hcNFTContractAbi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "mintPrice",
+    inputs: [
+      {
+        internalType: "enum MintHCProject.Phase",
+        name: "",
+        type: "uint8",
+      },
+    ],
+    name: "mintPriceList",
     outputs: [
       {
         internalType: "uint256",
@@ -452,6 +586,40 @@ const hcNFTContractAbi = [
         internalType: "string",
         name: "",
         type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "NFTCountsList",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "whitelist1",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "whitelist2",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "public1",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "public2",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -503,6 +671,84 @@ const hcNFTContractAbi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "public1SaleAmount",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "public1SaleAvailableAmount",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "public1SaleLimit",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "public2SaleAmount",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "public2SaleAvailableAmount",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "public2SaleLimit",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "bytes4",
@@ -529,6 +775,19 @@ const hcNFTContractAbi = [
         internalType: "string",
         name: "",
         type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "testMode",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
       },
     ],
     stateMutability: "view",
@@ -598,7 +857,20 @@ const hcNFTContractAbi = [
   },
   {
     inputs: [],
-    name: "totalNFTcount",
+    name: "totalNFTAmount",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalSaleNFTAmount",
     outputs: [
       {
         internalType: "uint256",
@@ -623,14 +895,8 @@ const hcNFTContractAbi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    name: "whitelist",
+    inputs: [],
+    name: "usingPublicWhitelist1",
     outputs: [
       {
         internalType: "bool",
@@ -641,13 +907,214 @@ const hcNFTContractAbi = [
     stateMutability: "view",
     type: "function",
   },
+  {
+    inputs: [],
+    name: "usingPublicWhitelist2",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "whitelistSaleAmount",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "whitelistSaleAvailableAmount",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "whitelistSaleLimit",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
 ];
 
-const hcNFTContractAddress = "0xB6e941c821Ed45b099942a17EB679E82F1e269D5";
+const whitelistContractAbi = [
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "OwnershipTransferred",
+    type: "event",
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum HCProjectWhitelists.Phase",
+        name: "phase",
+        type: "uint8",
+      },
+      {
+        internalType: "address[]",
+        name: "toAddAddresses",
+        type: "address[]",
+      },
+    ],
+    name: "addToWhitelist",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum HCProjectWhitelists.Phase",
+        name: "phase",
+        type: "uint8",
+      },
+      {
+        internalType: "address",
+        name: "_whitelistAddress",
+        type: "address",
+      },
+    ],
+    name: "deleteWhitelist",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum HCProjectWhitelists.Phase",
+        name: "phase",
+        type: "uint8",
+      },
+      {
+        internalType: "address",
+        name: "_whitelistAddress",
+        type: "address",
+      },
+    ],
+    name: "setWhitelist",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "whitelists",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "whitelist1",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "whitelist2",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "public1",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "public2",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+];
+
+const hcNFTContractAddress = "0x929B7004f4739431F3638daB529a94dF3764B02C";
+const whitelistContractAddress = "0x4Fd062F6D5ED3d533E8d7B54670B5FD195168cff";
 
 export const web3 = new Web3(window.ethereum);
 
 export const hcNFTContract = new web3.eth.Contract(
   hcNFTContractAbi,
   hcNFTContractAddress
+);
+
+export const whitelistContract = new web3.eth.Contract(
+  whitelistContractAbi,
+  whitelistContractAddress
 );

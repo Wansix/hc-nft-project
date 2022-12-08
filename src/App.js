@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MintPage from "./screens/MintPage";
 import Home from "./screens/Home";
+import UtilEvent from "./screens/UtilEvent";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           />
           <Route path="/Mint-public1" element={<MintPage stage="public1" />} />
           <Route path="/Mint-public2" element={<MintPage stage="public2" />} />
+          <Route path="/UtilEvent" element={<UtilEvent />} />
         </Routes>
       </div>
     </Router>

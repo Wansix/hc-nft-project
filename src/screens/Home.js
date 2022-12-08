@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import WalletConnect from "../components/WalletConnect";
+import UtilEventMenu from "../components/UtilEventMenu";
 
 export const Home = () => {
   return (
@@ -9,7 +9,7 @@ export const Home = () => {
         className="Home-maincontainer"
         style={{ backgroundImage: "url(./background.png)" }}
       >
-        <WalletConnect></WalletConnect>
+        <UtilEventMenu></UtilEventMenu>
         <div className="Home-maincontainer__nav">
           <div className="Home-maincontainer__nav-button">
             <Link to="/Mint-test">

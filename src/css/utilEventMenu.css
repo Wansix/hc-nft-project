@@ -1,0 +1,25 @@
+.UtilEventMenu {
+  /* background-color: aqua; */
+  position: fixed;
+  right: 0px;
+  top: 30px;
+  width: 270px;
+  height: 50px;
+  background-color: #e81820;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 32px;
+  justify-content: center;
+}
+
+.UtilEventMenuImg {
+  width: 270px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.UtilEvent__Main-container {
+  display: flex;
+  justify-content: center;
+}

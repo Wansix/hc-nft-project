@@ -1,6 +1,7 @@
 @import "./css/home.css";
 @import "./css/mintPage.css";
 @import "./css/walletConnect.css";
+@import "./css/utilEventMenu.css";
 
 .App {
   background-color: black;
