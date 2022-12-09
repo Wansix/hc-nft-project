@@ -2,7 +2,7 @@
 @import "./css/mintPage.css";
 @import "./css/walletConnect.css";
 @import "./css/utilEventMenu.css";
-
+@import "./css/testHome.css";
 .App {
   background-color: black;
   position: relative;

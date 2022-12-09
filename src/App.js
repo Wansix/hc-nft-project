@@ -4,14 +4,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MintPage from "./screens/MintPage";
 import Home from "./screens/Home";
 import UtilEvent from "./screens/UtilEvent";
+import TestHome from "./screens/TestHome";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Mint-test" element={<MintPage stage="test" />} />
+          <Route path="/" element={<TestHome />} />
+          <Route path="/HomeTest" element={<Home />} />
+          <Route path="/Mint-test1" element={<MintPage stage="test1" />} />
+          <Route path="/Mint-test2" element={<MintPage stage="test2" />} />
           <Route
             path="/Mint-whitelist1"
             element={<MintPage stage="whitelist1" />}

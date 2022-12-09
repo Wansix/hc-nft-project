@@ -1,10 +1,10 @@
-.Home {
+.TestHome {
   display: flex;
   justify-content: center;
   background-color: black;
 }
 
-.Home-maincontainer {
+.TestHome-maincontainer {
   position: relative;
   background-color: black;
   width: 1600px;
@@ -14,7 +14,7 @@
   /* background-size: cover; */
 }
 
-.Home-maincontainer__nav {
+.TestHome-maincontainer__nav {
   margin-top: 570px;
   height: 160px;
   width: 100%;
@@ -26,7 +26,7 @@
   display: flex;
   justify-content: flex-start;
 }
-.Home-maincontainer__nav-button {
+.TestHome-maincontainer__nav-button {
   /* background-color: aqua; */
   position: absolute;
   height: 160px;
@@ -34,27 +34,18 @@
   display: flex;
   justify-content: center;
 }
-
-.Home-maincontainer__nav-button:hover {
+.TestHome-maincontainer__nav-button:hover {
   opacity: 0.8;
 }
-.Home-maincontainer__nav-button img {
+.TestHome-maincontainer__nav-button img {
   height: 100%;
   width: 100%;
 }
 
-.Home-maincontainer__nav-button:first-child {
-  margin-left: 280px;
-}
-
-.Home-maincontainer__nav-button:nth-child(2) {
+.TestHome-maincontainer__nav-button:first-child {
   margin-left: 560px;
 }
 
-.Home-maincontainer__nav-button:nth-child(3) {
+.TestHome-maincontainer__nav-button:nth-child(2) {
   margin-left: 840px;
-}
-
-.Home-maincontainer__nav-button:last-child {
-  margin-left: 1120px;
 }

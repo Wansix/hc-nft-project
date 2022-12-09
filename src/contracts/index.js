@@ -1,6 +1,6 @@
 import Web3 from "web3";
 
-const hcNFTContractAbi = [
+export const whaleyNFTContractAbi = [
   {
     inputs: [],
     name: "advancePhase",
@@ -133,13 +133,6 @@ const hcNFTContractAbi = [
     name: "batchMintNFT_Owner",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "mintNFT",
-    outputs: [],
-    stateMutability: "payable",
     type: "function",
   },
   {
@@ -291,19 +284,6 @@ const hcNFTContractAbi = [
       },
     ],
     name: "setMintPrice",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string",
-        name: "_notRevealedURI",
-        type: "string",
-      },
-    ],
-    name: "setNotRevealURI",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -961,7 +941,7 @@ const hcNFTContractAbi = [
   },
 ];
 
-const whitelistContractAbi = [
+export const whitelistContractAbi = [
   {
     anonymous: false,
     inputs: [
@@ -1104,17 +1084,59 @@ const whitelistContractAbi = [
   },
 ];
 
-const hcNFTContractAddress = "0x929B7004f4739431F3638daB529a94dF3764B02C";
+const whaleyContractAddress = "0x45A2C00664f8FaFb8cDC683e2Da2614f341750b9";
 const whitelistContractAddress = "0x4Fd062F6D5ED3d533E8d7B54670B5FD195168cff";
+
+const test1ContractAddress = "0x45A2C00664f8FaFb8cDC683e2Da2614f341750b9";
+const test1whitelistContractAddress =
+  "0x4Fd062F6D5ED3d533E8d7B54670B5FD195168cff";
 
 export const web3 = new Web3(window.ethereum);
 
 export const hcNFTContract = new web3.eth.Contract(
-  hcNFTContractAbi,
-  hcNFTContractAddress
+  whaleyNFTContractAbi,
+  whaleyContractAddress
 );
 
 export const whitelistContract = new web3.eth.Contract(
   whitelistContractAbi,
   whitelistContractAddress
 );
+
+export const test1Contract = new web3.eth.Contract(
+  whaleyNFTContractAbi,
+  test1ContractAddress
+);
+
+export const whaleyContract = (mode) => {
+  if (mode === "test1") {
+    return new web3.eth.Contract(whaleyNFTContractAbi, test1ContractAddress);
+  }
+  if (mode === "test2") {
+    return new web3.eth.Contract(whaleyNFTContractAbi, test1ContractAddress);
+  }
+  if (mode === "mint") {
+    return new web3.eth.Contract(whaleyNFTContractAbi, whaleyContractAddress);
+  }
+};
+
+export const whaleyWhitelistContract = (mode) => {
+  if (mode === "test1") {
+    return new web3.eth.Contract(
+      whitelistContractAbi,
+      test1whitelistContractAddress
+    );
+  }
+  if (mode === "test2") {
+    return new web3.eth.Contract(
+      whitelistContractAbi,
+      test1whitelistContractAddress
+    );
+  }
+  if (mode === "mint") {
+    return new web3.eth.Contract(
+      whitelistContractAbi,
+      whitelistContractAddress
+    );
+  }
+};
