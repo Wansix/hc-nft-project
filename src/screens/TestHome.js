@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import UtilEventMenu from "../components/UtilEventMenu";
 
 export const TestHome = () => {
   return (
@@ -8,6 +9,7 @@ export const TestHome = () => {
         className="TestHome-maincontainer"
         style={{ backgroundImage: "url(./test_background.png)" }}
       >
+        <UtilEventMenu></UtilEventMenu>
         <div className="TestHome-maincontainer__nav">
           <div className="TestHome-maincontainer__nav-button">
             <Link to="/Mint-test1">
