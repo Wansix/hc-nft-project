@@ -1087,7 +1087,7 @@ export const whitelistContractAbi = [
 const whaleyContractAddress = "0x45A2C00664f8FaFb8cDC683e2Da2614f341750b9";
 const whitelistContractAddress = "0x4Fd062F6D5ED3d533E8d7B54670B5FD195168cff";
 
-const test1ContractAddress = "0x45A2C00664f8FaFb8cDC683e2Da2614f341750b9";
+const test1ContractAddress = "0x4f51674bC1BD39126d36c4FE595df4BA850313Db";
 const test1whitelistContractAddress =
   "0x4Fd062F6D5ED3d533E8d7B54670B5FD195168cff";
 

@@ -117,7 +117,13 @@ export const MintPage = (props) => {
 
       const isWhiteList = await checkWhiteLists();
       if (isWhiteList === false) {
-        alert("It's not whitelist account");
+        alert("화이트리스트가 아닙니다.");
+        return;
+      }
+
+      const saleAvailable = await checkSaleAvailable();
+      if (saleAvailable === false) {
+        alert("구매 할 수 없습니다.");
         return;
       }
 
@@ -131,12 +137,14 @@ export const MintPage = (props) => {
 
           nftContract.methods.batchMintNFT(mintAmount).send({
             from: account,
-            value: mintPrice,
+            value: mintPrice * mintAmount,
             maxFeePerGas: max,
             maxPriorityFeePerGas: Number(tip) + addGasFee,
           });
         });
       });
+
+      checkRemainAmount();
     } catch (error) {
       console.error(error);
     }
@@ -222,6 +230,51 @@ export const MintPage = (props) => {
       setRemainingSupply(remainSupply);
     } catch (error) {
       console.log("checkRmainAmountError", error);
+    }
+  };
+
+  const checkSaleAvailable = async () => {
+    try {
+      if (!nftContract) {
+        return;
+      }
+      const totalSaleNFTAmount = await nftContract.methods
+        .totalSaleNFTAmount()
+        .call();
+
+      const totalSupply = await nftContract.methods.totalSaleNFTAmount().call();
+
+      if (Number(totalSupply) + Number(mintAmount) > Number(totalSaleNFTAmount))
+        return false;
+
+      const NFTCountsList = await nftContract.methods
+        .NFTCountsList(account)
+        .call();
+
+      let saleLimit;
+      let accountNFTCount = 0;
+      if (mintPagePhase === Phase.WHITELIST1) {
+        saleLimit = await nftContract.methods.whitelistSaleLimit().call();
+        accountNFTCount = NFTCountsList[WhitelistAddress.WHITELIST1];
+      }
+      if (mintPagePhase === Phase.WHITELIST2) {
+        saleLimit = await nftContract.methods.whitelistSaleLimit().call();
+        accountNFTCount = NFTCountsList[WhitelistAddress.WHITELIST2];
+      }
+      if (mintPagePhase === Phase.PUBLIC1) {
+        saleLimit = await nftContract.methods.public1SaleLimit().call();
+        accountNFTCount = NFTCountsList[WhitelistAddress.PUBLIC1];
+      }
+      if (mintPagePhase === Phase.PUBLIC2) {
+        saleLimit = await nftContract.methods.public2SaleLimit().call();
+        accountNFTCount = NFTCountsList[WhitelistAddress.PUBLIC2];
+      }
+
+      if (accountNFTCount + mintAmount > saleLimit) return false;
+
+      return true;
+    } catch (error) {
+      console.log("checkSaleLimt", error);
     }
   };
 

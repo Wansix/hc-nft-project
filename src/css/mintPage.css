@@ -117,6 +117,10 @@
   /* background-color: beige; */
 }
 
+.MintPage__MintButton-wrapper:hover {
+  opacity: 0.8;
+}
+
 .MintPage__MintButton-wrapper img {
   width: 400px;
 }
