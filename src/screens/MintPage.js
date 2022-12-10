@@ -1,11 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import {
-  hcNFTContract,
-  whitelistContract,
-  whaleyContract,
-  whaleyWhitelistContract,
-} from "../contracts/index";
+import { whaleyContract, whaleyWhitelistContract } from "../contracts/index";
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import WalletConnect from "../components/WalletConnect";
 import * as dotenv from "dotenv";
@@ -37,7 +32,7 @@ export const MintPage = (props) => {
   const [mintPrice, setMintPrice] = useState("0"); //matic 단위
   const [viewMintPrice, setViewMintPrice] = useState("0");
   const [mintAmount, setMintAmount] = useState(1);
-  const [maxMintAmount, setMaxMintAmount] = useState(3);
+  const [maxMintAmount, setMaxMintAmount] = useState(1);
   const [mintPagePhase, setMintPagePhase] = useState(Phase.INIT);
   const [contractPhase, setContractPhase] = useState(Phase.INIT);
   const [nftContract, setNftContract] = useState();
@@ -82,6 +77,7 @@ export const MintPage = (props) => {
     } else if (props.stage === "public2") {
       setMintPagePhase(Phase.PUBLIC2);
     }
+
     // console.log("mintPhase", mintPagePhase);
   };
 
@@ -242,7 +238,7 @@ export const MintPage = (props) => {
         .totalSaleNFTAmount()
         .call();
 
-      const totalSupply = await nftContract.methods.totalSaleNFTAmount().call();
+      const totalSupply = await nftContract.methods.totalSupply().call();
 
       if (Number(totalSupply) + Number(mintAmount) > Number(totalSaleNFTAmount))
         return false;
@@ -283,7 +279,7 @@ export const MintPage = (props) => {
       if (!nftContract) {
         return;
       }
-      let saleLimit;
+      let saleLimit = 1;
       if (
         mintPagePhase === Phase.WHITELIST1 ||
         mintPagePhase === Phase.WHITELIST2
@@ -296,6 +292,7 @@ export const MintPage = (props) => {
       if (mintPagePhase === Phase.PUBLIC2) {
         saleLimit = await nftContract.methods.public2SaleLimit().call();
       }
+      // console.log("saleLimit", saleLimit);
 
       setMaxMintAmount(saleLimit);
     } catch (error) {
@@ -303,6 +300,23 @@ export const MintPage = (props) => {
     }
   };
 
+  const switchChain = async () => {
+    try {
+      if (window.ethereum) {
+        console.log("switch Chain!");
+        window.ethereum
+          .request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: "0x89" }], // change to polygon
+          })
+          .then(() => {
+            checkMintPhase();
+          });
+      }
+    } catch (error) {
+      console.log("switchChain", error);
+    }
+  };
   useEffect(() => {
     getMintPrice();
     checkRemainAmount();
@@ -312,9 +326,9 @@ export const MintPage = (props) => {
   }, [mintPagePhase]);
 
   useEffect(() => {
+    switchChain();
     setContract();
-    // checkContractPhase();
-    checkMintPhase();
+    // checkMintPhase();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
