@@ -29,6 +29,7 @@ const addGasFee = 5000000000;
 
 const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 
+const max_mint = 3;
 export const MintPage = (props) => {
   const [account, setAccount] = useState("");
   const [remainingSupply, setRemainingSupply] = useState(0);
@@ -159,7 +160,7 @@ export const MintPage = (props) => {
     setMintAmount(amount);
   };
   const onClickPlus = () => {
-    if (mintAmount >= maxMintAmount) return;
+    if (mintAmount >= max_mint) return;
     const amount = mintAmount + 1;
     setMintAmount(amount);
   };
