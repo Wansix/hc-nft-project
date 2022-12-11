@@ -58,3 +58,7 @@
 .Home-maincontainer__nav-button:last-child {
   margin-left: 1120px;
 }
+
+.Mobile_Home {
+  display: none;
+}

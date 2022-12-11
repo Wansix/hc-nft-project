@@ -110,6 +110,21 @@ export const Admin = () => {
   const setAccountFunction = (_address) => {
     setAccount(_address);
   };
+
+  const getWhitelists = (whitelistNum) => {
+    let whitelists;
+    if (whitelistNum === 1) {
+      whitelists = document.querySelector(".addWhitelists_1").value;
+    }
+    if (whitelistNum === 2) {
+      whitelists = document.querySelector(".addWhitelists_2").value;
+    }
+
+    console.log(whitelists);
+    const arr = whitelists.split("\n");
+    console.log(arr);
+  };
+
   useEffect(() => {
     getIsRevealed();
     getCurrentStage();
@@ -149,6 +164,32 @@ export const Admin = () => {
             onClick={setReveal}
           >
             Reveal!
+          </Button>
+        </div>
+        <div>
+          add whitelist1
+          <textarea className="addWhitelists addWhitelists_1"></textarea>
+          <Button
+            className="Admin_Button"
+            variant="success"
+            onClick={() => {
+              getWhitelists(1);
+            }}
+          >
+            Add whitelist1
+          </Button>
+        </div>
+        <div>
+          add whitelist2
+          <textarea className="addWhitelists addWhitelists_2"></textarea>
+          <Button
+            className="Admin_Button"
+            variant="success"
+            onClick={() => {
+              getWhitelists(2);
+            }}
+          >
+            Add whitelist1
           </Button>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { whaleyContract, whaleyWhitelistContract } from "../contracts/index";
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import WalletConnect from "../components/WalletConnect";
 import * as dotenv from "dotenv";
+import { isMobile } from "react-device-detect";
 
 dotenv.config();
 const Phase = {
@@ -29,7 +30,6 @@ const addGasFee = 5000000000;
 
 const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 
-const max_mint = 3;
 export const MintPage = (props) => {
   const [account, setAccount] = useState("");
   const [remainingSupply, setRemainingSupply] = useState(0);
@@ -104,6 +104,11 @@ export const MintPage = (props) => {
         return;
       }
 
+      if (props.stage === "test1") {
+        alert("모의민팅1차 종료되었습니다.");
+        return;
+      }
+
       if (!account) {
         alert("지갑을 연결해주세요.");
         return;
@@ -163,7 +168,7 @@ export const MintPage = (props) => {
     setMintAmount(amount);
   };
   const onClickPlus = () => {
-    if (mintAmount >= max_mint) return;
+    if (mintAmount >= maxMintAmount) return;
     const amount = mintAmount + 1;
     setMintAmount(amount);
   };
@@ -287,7 +292,10 @@ export const MintPage = (props) => {
         saleLimit = await nftContract.methods.public1SaleLimit().call();
       }
       if (mintPagePhase === Phase.PUBLIC2) {
-        saleLimit = await nftContract.methods.public2SaleLimit().call();
+        if (props.stage === "test1") {
+          return;
+        }
+        saleLimit = await nftContract.methods.maxTransaction().call();
       }
       // console.log("saleLimit", saleLimit);
 
