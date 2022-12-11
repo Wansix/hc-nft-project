@@ -1,8 +1,4 @@
 @media screen and (max-width: 1000px) {
-  /* .Home-maincontainer {
-    display: none;
- 
-  } */
   .Home {
     display: none;
   }
@@ -33,30 +29,23 @@
   }
 
   .Mobile_Home_maincontainer__button-container {
-    background-color: aqua;
-    opacity: 0.5;
-    /* width: 80%; */
+    /* background-color: aqua; */
+    /* opacity: 0.5; */
+
     margin-top: 300px;
     height: 200px;
   }
+}
+.Mobile_Home_maincontainer__button-container-row {
+  display: flex;
+  margin-top: 20px;
+}
 
-  /* .right-container {
-      display: none;
-    }
-  
-    .main-container {
-      width: 100%;
-      overflow: scroll;
-    }
-  
-    .main-container::-webkit-scrollbar {
-      display: none;
-    }
-  
-    .home-wrapper__header-ad {
-      overflow: scroll;
-    }
-    .home-wrapper__header-ad::-webkit-scrollbar {
-      display: none;
-    } */
+.Mobile_Home__button {
+  /* background-color: antiquewhite; */
+  margin: 10px;
+}
+
+.Mobile_Home__button img {
+  width: 120px;
 }
