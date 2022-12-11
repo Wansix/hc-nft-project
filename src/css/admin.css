@@ -1,0 +1,22 @@
+.Admin {
+  background-color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.Admin-maincontainer {
+  padding: 20px;
+  margin-top: 100px;
+  background-color: beige;
+}
+
+.Admin-maincontainer > div {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.Admin_Button {
+  margin-left: 10px;
+}

@@ -3,6 +3,8 @@
 @import "./css/walletConnect.css";
 @import "./css/utilEventMenu.css";
 @import "./css/testHome.css";
+@import "./css/admin.css";
+
 .App {
   background-color: black;
   position: relative;

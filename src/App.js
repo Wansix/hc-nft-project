@@ -5,6 +5,7 @@ import MintPage from "./screens/MintPage";
 import Home from "./screens/Home";
 import UtilEvent from "./screens/UtilEvent";
 import TestHome from "./screens/TestHome";
+import Admin from "./screens/Admin";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<TestHome />} />
+          <Route path="/AdminTT" element={<Admin />} />
           <Route path="/HomeTest" element={<Home />} />
           <Route path="/Mint-test1" element={<MintPage stage="test1" />} />
           <Route path="/Mint-test2" element={<MintPage stage="test2" />} />

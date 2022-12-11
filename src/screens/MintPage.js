@@ -9,10 +9,13 @@ dotenv.config();
 const Phase = {
   INIT: 0,
   WHITELIST1: 1,
-  WHITELIST2: 2,
-  PUBLIC1: 3,
-  PUBLIC2: 4,
-  DONE: 5,
+  WAITING_WHITELIST2: 2,
+  WHITELIST2: 3,
+  WAITING_PUBLIC1: 4,
+  PUBLIC1: 5,
+  WAITING_PUBLIC2: 6,
+  PUBLIC2: 7,
+  DONE: 8,
 };
 
 const WhitelistAddress = {
@@ -22,7 +25,7 @@ const WhitelistAddress = {
   PUBLIC2: 3,
 };
 
-const addGasFee = 3000000000;
+const addGasFee = 5000000000;
 
 const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 
@@ -104,9 +107,10 @@ export const MintPage = (props) => {
         alert("지갑을 연결해주세요.");
         return;
       }
+      await checkContractPhase();
 
       if (mintPagePhase !== contractPhase) {
-        console.log("ttss", mintPagePhase, contractPhase);
+        console.log("no mint stage", mintPagePhase, contractPhase);
         alert("민팅 가능 Stage가 아닙니다.");
         return;
       }
@@ -131,16 +135,19 @@ export const MintPage = (props) => {
           const baseFee = Number(block.baseFeePerGas);
           const max = Number(tip) + baseFee - 1 + addGasFee;
 
-          nftContract.methods.batchMintNFT(mintAmount).send({
-            from: account,
-            value: mintPrice * mintAmount,
-            maxFeePerGas: max,
-            maxPriorityFeePerGas: Number(tip) + addGasFee,
-          });
+          nftContract.methods
+            .batchMintNFT(mintAmount)
+            .send({
+              from: account,
+              value: mintPrice * mintAmount,
+              maxFeePerGas: max,
+              maxPriorityFeePerGas: Number(tip) + addGasFee,
+            })
+            .then(() => {
+              checkRemainAmount();
+            });
         });
       });
-
-      checkRemainAmount();
     } catch (error) {
       console.error(error);
     }
@@ -168,31 +175,13 @@ export const MintPage = (props) => {
       .whitelists(account)
       .call();
 
-    const usingPublicWhitelist1 = await nftContract.methods
-      .usingPublicWhitelist1()
-      .call();
-
-    const usingPublicWhitelist2 = await nftContract.methods
-      .usingPublicWhitelist2()
-      .call();
-
     let response = true;
-    // console.log(isWhiteList);
-    // console.log("usingPublicWhitelist1", usingPublicWhitelist1);
-    // console.log("usingPublicWhitelist2", usingPublicWhitelist2);
-    // console.log("phase", contractPhase);
 
     if (contractPhase === Phase.WHITELIST1) {
       response = isWhiteList[WhitelistAddress.WHITELIST1];
     }
     if (contractPhase === Phase.WHITELIST2) {
       response = isWhiteList[WhitelistAddress.WHITELIST2];
-    }
-    if (contractPhase === Phase.PUBLIC1 && usingPublicWhitelist1) {
-      response = isWhiteList[WhitelistAddress.PUBLIC1];
-    }
-    if (contractPhase === Phase.PUBLIC2 && usingPublicWhitelist2) {
-      response = isWhiteList[WhitelistAddress.PUBLIC2];
     }
 
     return response;
@@ -239,7 +228,7 @@ export const MintPage = (props) => {
         .call();
 
       const totalSupply = await nftContract.methods.totalSupply().call();
-
+      // console.log(totalSupply, mintAmount, totalSaleNFTAmount);
       if (Number(totalSupply) + Number(mintAmount) > Number(totalSaleNFTAmount))
         return false;
 
@@ -266,7 +255,11 @@ export const MintPage = (props) => {
         accountNFTCount = NFTCountsList[WhitelistAddress.PUBLIC2];
       }
 
-      if (accountNFTCount + mintAmount > saleLimit) return false;
+      // console.log(accountNFTCount, mintAmount, saleLimit);
+      if (Number(accountNFTCount) + Number(mintAmount) > Number(saleLimit)) {
+        console.log("fail");
+        return false;
+      }
 
       return true;
     } catch (error) {
@@ -314,7 +307,7 @@ export const MintPage = (props) => {
           });
       }
     } catch (error) {
-      console.log("switchChain", error);
+      // console.log("switchChain", error);
     }
   };
   useEffect(() => {
