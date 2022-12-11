@@ -24,7 +24,7 @@ export const Admin = () => {
   const [nftWhitelistContract, setNftWhitelistContract] = useState();
 
   const setContract = () => {
-    const stage = "test1"; //test
+    const stage = "test2"; //test
     if (stage === "test1") {
       setNftContract(whaleyContract("test1"));
       setNftWhitelistContract(whaleyWhitelistContract("test1"));
