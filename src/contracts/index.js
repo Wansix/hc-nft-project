@@ -2906,7 +2906,7 @@ const whaleyContractAddress = "0x45A2C00664f8FaFb8cDC683e2Da2614f341750b9";
 const whitelistContractAddress = "0x4Fd062F6D5ED3d533E8d7B54670B5FD195168cff";
 
 const test1ContractAddress = "0x80d37d8bFf8C5956201d2aF9b5522E838663be40";
-const test2ContractAddress = "0x40F96535f8b04a67Ad0bfBDd10823F86Dd325Ffe";
+const test2ContractAddress = "0x99148f6F8b94248487178B48Fcb4A2DE6Dad2f08";
 const test1whitelistContractAddress =
   "0xbe5522b399d4A9bfaF605a975Aeb0D8604D1B28a";
 

@@ -109,11 +109,6 @@ export const MintPage = (props) => {
         return;
       }
 
-      if (props.stage === "test2") {
-        alert("민팅 시간 전입니다.");
-        return;
-      }
-
       if (!account) {
         alert("지갑을 연결해주세요.");
         return;
