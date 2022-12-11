@@ -145,7 +145,9 @@ export const MintPage = (props) => {
               maxPriorityFeePerGas: Number(tip) + addGasFee,
             })
             .then(() => {
-              alert("Mint Succeded! 웨일리NFT 홀더가 되신것을 축하드립니다!");
+              alert(
+                "Mint Succeded! 모의민팅에 성공하셨습니다. 오픈씨로 가셔서 지갑을 확인해주세요!"
+              );
               checkRemainAmount();
             });
         });
