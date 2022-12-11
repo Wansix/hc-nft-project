@@ -145,6 +145,7 @@ export const MintPage = (props) => {
               maxPriorityFeePerGas: Number(tip) + addGasFee,
             })
             .then(() => {
+              alert("민팅 완료!");
               checkRemainAmount();
             });
         });
