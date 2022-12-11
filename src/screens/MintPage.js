@@ -383,7 +383,7 @@ export const MintPage = (props) => {
           </div>
         </div>
       </div>
-      <div className="Mobile_MintPage__Main-container">
+      {/* <div className="Mobile_MintPage__Main-container">
         <div
           className="Mobile_MintPage__Mint-container"
           style={{ backgroundImage: "url(./mobile_mint_background.png)" }}
@@ -435,7 +435,7 @@ export const MintPage = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
