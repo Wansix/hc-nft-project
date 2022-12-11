@@ -338,47 +338,105 @@ export const MintPage = (props) => {
   }, []);
 
   return (
-    <div className="MintPage__Main-container">
-      <div
-        className="MintPage__Mint-container"
-        style={{ backgroundImage: "url(./MintingPageBackground.png)" }}
-      >
-        <WalletConnect setAccountFunction={setAccountFunction}></WalletConnect>
-        <div className="MintPage__MintInfo">
-          <div className="MintPage__MintInfo-AmountFont">AMOUNT</div>
-          <div className="MintPage__MintInfo-RemainingSupply">
-            {remainingSupply}
+    <>
+      <div className="MintPage__Main-container">
+        <div
+          className="MintPage__Mint-container"
+          style={{ backgroundImage: "url(./MintingPageBackground.png)" }}
+        >
+          <WalletConnect
+            setAccountFunction={setAccountFunction}
+            isMobile={false}
+          ></WalletConnect>
+          <div className="MintPage__MintInfo">
+            <div className="MintPage__MintInfo-AmountFont">AMOUNT</div>
+            <div className="MintPage__MintInfo-RemainingSupply">
+              {remainingSupply}
+            </div>
+            <div className="MintPage__MintInfo-price">
+              <span>{viewMintPrice} MATIC </span>
+              <span className="MintPage__MintInfo-price_grey">PER </span>
+              <span>1 NFT </span>
+              <span className="MintPage__MintInfo-price_grey">
+                (Excluding gas fees)
+              </span>
+            </div>
           </div>
-          <div className="MintPage__MintInfo-price">
-            <span>{viewMintPrice} MATIC </span>
-            <span className="MintPage__MintInfo-price_grey">PER </span>
-            <span>1 NFT </span>
-            <span className="MintPage__MintInfo-price_grey">
-              (Excluding gas fees)
-            </span>
+          <div className="MintPage__MintAmountBox">
+            <div
+              className="MintPage__MintAmount-button MintPage__MintAmount-button-minus"
+              onClick={onClickMinus}
+            >
+              <span>-</span>
+            </div>
+            <div className="MintPage__MintAmount-amount">{mintAmount}</div>
+            <div
+              className="MintPage__MintAmount-button MintPage__MintAmount-button-plus"
+              onClick={onClickPlus}
+            >
+              <span>+</span>
+            </div>
           </div>
-        </div>
-        <div className="MintPage__MintAmountBox">
-          <div
-            className="MintPage__MintAmount-button MintPage__MintAmount-button-minus"
-            onClick={onClickMinus}
-          >
-            <span>-</span>
-          </div>
-          <div className="MintPage__MintAmount-amount">{mintAmount}</div>
-          <div
-            className="MintPage__MintAmount-button MintPage__MintAmount-button-plus"
-            onClick={onClickPlus}
-          >
-            <span>+</span>
-          </div>
-        </div>
 
-        <div className="MintPage__MintButton-wrapper" onClick={onClickMint}>
-          <img src="minting_button.png" alt="minting_button"></img>
+          <div className="MintPage__MintButton-wrapper" onClick={onClickMint}>
+            <img src="minting_button.png" alt="minting_button"></img>
+          </div>
         </div>
       </div>
-    </div>
+      <div className="Mobile_MintPage__Main-container">
+        <div
+          className="Mobile_MintPage__Mint-container"
+          style={{ backgroundImage: "url(./mobile_mint_background.png)" }}
+        >
+          <div className="Mobile-MinPage__MintWrapper">
+            <WalletConnect
+              setAccountFunction={setAccountFunction}
+              isMobile={true}
+            ></WalletConnect>
+            <div className="Mobile-MintPage__MintInfo">
+              <div className="Mobile-MintPage__MintInfo-AmountFont">AMOUNT</div>
+              <div className="Mobile-MintPage__MintInfo-RemainingSupply">
+                {remainingSupply}
+              </div>
+              <div className="Mobile-MintPage__MintInfo-price">
+                <span>{viewMintPrice} MATIC </span>
+                <span className="Mobile-MintPage__MintInfo-price_grey">
+                  PER{" "}
+                </span>
+                <span>1 NFT </span>
+                <span className="Mobile-MintPage__MintInfo-price_grey">
+                  (Excluding gas fees)
+                </span>
+              </div>
+            </div>
+            <div className="Mobile-MintPage__MintAmountBox">
+              <div
+                className="Mobile-MintPage__MintAmount-button MintPage__MintAmount-button-minus"
+                onClick={onClickMinus}
+              >
+                <span>-</span>
+              </div>
+              <div className="Mobile-MintPage__MintAmount-amount">
+                {mintAmount}
+              </div>
+              <div
+                className="Mobile-MintPage__MintAmount-button MintPage__MintAmount-button-plus"
+                onClick={onClickPlus}
+              >
+                <span>+</span>
+              </div>
+            </div>
+
+            <div
+              className="Mobile-MintPage__MintButton-wrapper"
+              onClick={onClickMint}
+            >
+              <img src="minting_button.png" alt="minting_button"></img>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

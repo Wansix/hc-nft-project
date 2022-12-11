@@ -124,3 +124,7 @@
 .MintPage__MintButton-wrapper img {
   width: 400px;
 }
+
+.Mobile_MintPage__Main-container {
+  display: none;
+}
