@@ -155,7 +155,7 @@ export const MintPage = (props) => {
             })
             .then(() => {
               alert(
-                "Mint Succeded!\n모의민팅에 성공하셨습니다.\n오픈씨로 가셔서 지갑을 확인해주세요!"
+                "민팅에 성공하셨습니다!\n오픈씨로 가셔서 지갑을 확인해주세요!"
               );
               checkRemainAmount();
             });
