@@ -7,6 +7,7 @@ import {
 } from "../contracts/index";
 import WalletConnect from "../components/WalletConnect";
 import Button from "react-bootstrap/Button";
+import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 const Phase = {
   INIT: 0,
   WHITELIST1: 1,
@@ -18,6 +19,9 @@ const Phase = {
   PUBLIC2: 7,
   DONE: 8,
 };
+const addGasFee = 5000000000;
+
+const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 
 export const Admin = () => {
   const [account, setAccount] = useState("");
@@ -134,10 +138,29 @@ export const Admin = () => {
         return;
       }
 
-      const response = await nftContract.methods.reveal().send({
-        from: account,
+      const alch = createAlchemyWeb3(alchemy_privateKeyHttps);
+      alch.eth.getMaxPriorityFeePerGas().then((tip) => {
+        alch.eth.getBlock("pending").then((block) => {
+          const baseFee = Number(block.baseFeePerGas);
+          const max = Number(tip) + baseFee - 1 + addGasFee;
+
+          nftContract.methods
+            .reveal()
+            .send({
+              from: account,
+              maxFeePerGas: max,
+              maxPriorityFeePerGas: Number(tip) + addGasFee,
+            })
+            .then(() => {
+              getIsRevealed();
+            });
+        });
       });
-      if (response) getIsRevealed();
+
+      // const response = await nftContract.methods.reveal().send({
+      //   from: account,
+      // });
+      // if (response) getIsRevealed();
     } catch (error) {
       console.log("setReveal", error);
     }
@@ -176,10 +199,29 @@ export const Admin = () => {
         return;
       }
 
-      const response = await nftContract.methods.advancePhase().send({
-        from: account,
+      const alch = createAlchemyWeb3(alchemy_privateKeyHttps);
+      alch.eth.getMaxPriorityFeePerGas().then((tip) => {
+        alch.eth.getBlock("pending").then((block) => {
+          const baseFee = Number(block.baseFeePerGas);
+          const max = Number(tip) + baseFee - 1 + addGasFee;
+
+          nftContract.methods
+            .advancePhase()
+            .send({
+              from: account,
+              maxFeePerGas: max,
+              maxPriorityFeePerGas: Number(tip) + addGasFee,
+            })
+            .then(() => {
+              getCurrentStage();
+            });
+        });
       });
-      if (response) getCurrentStage();
+
+      // const response = await nftContract.methods.advancePhase().send({
+      //   from: account,
+      // });
+      // if (response) getCurrentStage();
     } catch (error) {
       console.log("setReveal", error);
     }
