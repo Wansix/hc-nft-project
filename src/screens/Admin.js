@@ -99,7 +99,7 @@ export const Admin = () => {
   };
 
   const setContract = () => {
-    const stage = "test2"; //test
+    const stage = "mint"; //test
     if (stage === "test1") {
       setNftContract(whaleyContract("test1"));
       setNftWhitelistContract(whaleyWhitelistContract("test1"));
@@ -192,18 +192,22 @@ export const Admin = () => {
   const setWhitelists = async (whitelistNum) => {
     let whitelists;
     let currentPhase;
-    if (whitelistNum === 1) {
+    if (!account) {
+      alert("지갑 연결 해주세요");
+      return;
+    }
+    if (whitelistNum === Phase.WHITELIST1) {
       whitelists = document.querySelector(".addWhitelists_1").value;
       currentPhase = Phase.WHITELIST1;
     }
-    if (whitelistNum === 2) {
+    if (whitelistNum === Phase.WHITELIST2) {
       whitelists = document.querySelector(".addWhitelists_2").value;
       currentPhase = Phase.WHITELIST2;
     }
 
-    // console.log(whitelists);
+    console.log(whitelists);
     const arr = whitelists.split("\n");
-    // console.log(arr);
+    console.log(arr);
     try {
       if (!nftContract) {
         return;
@@ -235,11 +239,15 @@ export const Admin = () => {
   };
 
   const setPrice = async (_phase) => {
+    if (!account) {
+      alert("지갑 연결 해주세요");
+      return;
+    }
     if (!nftContract) {
       return;
     }
-    console.log(_phase);
-    return;
+    // console.log(_phase);
+
     let _price;
     if (_phase === Phase.WHITELIST1) {
       _price = textWhitelist1Price * 10 ** 18;
@@ -268,6 +276,10 @@ export const Admin = () => {
 
   const setDepositAddress = async () => {
     // console.log(textDepositAddress);
+    if (!account) {
+      alert("지갑 연결 해주세요");
+      return;
+    }
     try {
       const response = await nftContract.methods
         .setMintDeposit(textDepositAddress.toString())
@@ -297,8 +309,13 @@ export const Admin = () => {
   }, []);
   return (
     <div className="Admin">
-      <WalletConnect setAccountFunction={setAccountFunction}></WalletConnect>
       <div className="Admin-maincontainer">
+        <div>
+          <WalletConnect
+            setAccountFunction={setAccountFunction}
+          ></WalletConnect>
+        </div>
+
         <div> Contract Address : {contractAddress}</div>
 
         <div> 민팅 단계</div>
@@ -429,7 +446,7 @@ export const Admin = () => {
             className="Admin_Button"
             variant="success"
             onClick={() => {
-              setWhitelists(1);
+              setWhitelists(Phase.WHITELIST1);
             }}
           >
             Add whitelist1
@@ -442,7 +459,7 @@ export const Admin = () => {
             className="Admin_Button"
             variant="success"
             onClick={() => {
-              setWhitelists(2);
+              setWhitelists(Phase.WHITELIST2);
             }}
           >
             Add whitelist1

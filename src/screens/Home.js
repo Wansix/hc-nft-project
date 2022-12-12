@@ -13,8 +13,7 @@ export const Home = () => {
           <UtilEventMenu></UtilEventMenu>
           <div className="Home-maincontainer__nav">
             <div className="Home-maincontainer__nav-button">
-              <Link to="/Mint-test">
-                {/* <Link to="/Mint-whitelist1"> */}
+              <Link to="/Mint-whitelist1">
                 <img src="whitelist1_button.png" alt="whitelist1_button"></img>
               </Link>
             </div>

@@ -2,13 +2,6 @@ import Web3 from "web3";
 
 export const whaleyNFTContractAbi = [
   {
-    inputs: [],
-    name: "advancePhase",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
         internalType: "string",
@@ -85,64 +78,6 @@ export const whaleyNFTContractAbi = [
     type: "event",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "approve",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "backPhase",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-    ],
-    name: "batchMintNFT",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-    ],
-    name: "batchMintNFT_Owner",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "mintNFT_Owner",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     anonymous: false,
     inputs: [
       {
@@ -160,177 +95,6 @@ export const whaleyNFTContractAbi = [
     ],
     name: "OwnershipTransferred",
     type: "event",
-  },
-  {
-    inputs: [],
-    name: "renounceOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "reveal",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "from",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "safeTransferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "from",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-      {
-        internalType: "bytes",
-        name: "data",
-        type: "bytes",
-      },
-    ],
-    name: "safeTransferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_address",
-        type: "address",
-      },
-    ],
-    name: "setAdmin",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "operator",
-        type: "address",
-      },
-      {
-        internalType: "bool",
-        name: "approved",
-        type: "bool",
-      },
-    ],
-    name: "setApprovalForAll",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_mintDepositAddress",
-        type: "address",
-      },
-    ],
-    name: "setMintDeposit",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "enum MintHCProject.Phase",
-        name: "phase",
-        type: "uint8",
-      },
-      {
-        internalType: "uint256",
-        name: "_mintPrice",
-        type: "uint256",
-      },
-    ],
-    name: "setMintPrice",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string",
-        name: "_metadataURI",
-        type: "string",
-      },
-    ],
-    name: "setTokenURI",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_name",
-        type: "uint256",
-      },
-      {
-        internalType: "bool",
-        name: "_use",
-        type: "bool",
-      },
-    ],
-    name: "setUsingPublicWhitelist",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_whitelistContractAddress",
-        type: "address",
-      },
-    ],
-    name: "setWhitelistContract",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
   },
   {
     anonymous: false,
@@ -361,36 +125,34 @@ export const whaleyNFTContractAbi = [
     inputs: [
       {
         internalType: "address",
-        name: "from",
+        name: "",
         type: "address",
       },
+    ],
+    name: "NFTCountsList",
+    outputs: [
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        internalType: "uint256",
+        name: "whitelist1",
+        type: "uint256",
       },
       {
         internalType: "uint256",
-        name: "tokenId",
+        name: "whitelist2",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "public1",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "public2",
         type: "uint256",
       },
     ],
-    name: "transferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "newOwner",
-        type: "address",
-      },
-    ],
-    name: "transferOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -413,6 +175,38 @@ export const whaleyNFTContractAbi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "advancePhase",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "approve",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "backPhase",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "address",
@@ -432,11 +226,37 @@ export const whaleyNFTContractAbi = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_amount",
+        type: "uint256",
+      },
+    ],
+    name: "batchMintNFT",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_amount",
+        type: "uint256",
+      },
+    ],
+    name: "batchMintNFT_Owner",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "currentPhase",
     outputs: [
       {
-        internalType: "enum MintHCProject.Phase",
+        internalType: "enum MintWhaleyProject.Phase",
         name: "",
         type: "uint8",
       },
@@ -540,9 +360,16 @@ export const whaleyNFTContractAbi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "mintNFT_Owner",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [
       {
-        internalType: "enum MintHCProject.Phase",
+        internalType: "enum MintWhaleyProject.Phase",
         name: "",
         type: "uint8",
       },
@@ -566,40 +393,6 @@ export const whaleyNFTContractAbi = [
         internalType: "string",
         name: "",
         type: "string",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    name: "NFTCountsList",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "whitelist1",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "whitelist2",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "public1",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "public2",
-        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -726,6 +519,159 @@ export const whaleyNFTContractAbi = [
       },
     ],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "reveal",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "safeTransferFrom",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "data",
+        type: "bytes",
+      },
+    ],
+    name: "safeTransferFrom",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "setAdmin",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "operator",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "approved",
+        type: "bool",
+      },
+    ],
+    name: "setApprovalForAll",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_mintDepositAddress",
+        type: "address",
+      },
+    ],
+    name: "setMintDeposit",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum MintWhaleyProject.Phase",
+        name: "phase",
+        type: "uint8",
+      },
+      {
+        internalType: "uint256",
+        name: "_mintPrice",
+        type: "uint256",
+      },
+    ],
+    name: "setMintPrice",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_metadataURI",
+        type: "string",
+      },
+    ],
+    name: "setTokenURI",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_whitelistContractAddress",
+        type: "address",
+      },
+    ],
+    name: "setWhitelistContract",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -875,29 +821,39 @@ export const whaleyNFTContractAbi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "usingPublicWhitelist1",
-    outputs: [
+    inputs: [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
       },
     ],
-    stateMutability: "view",
+    name: "transferFrom",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [],
-    name: "usingPublicWhitelist2",
-    outputs: [
+    inputs: [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
       },
     ],
-    stateMutability: "view",
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -2724,42 +2680,6 @@ export const test2WhaleyNFTContractAbi = [
 
 export const whitelistContractAbi = [
   {
-    inputs: [
-      {
-        internalType: "enum HCProjectWhitelists.Phase",
-        name: "phase",
-        type: "uint8",
-      },
-      {
-        internalType: "address[]",
-        name: "toAddAddresses",
-        type: "address[]",
-      },
-    ],
-    name: "addToWhitelist",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "enum HCProjectWhitelists.Phase",
-        name: "phase",
-        type: "uint8",
-      },
-      {
-        internalType: "address",
-        name: "_whitelistAddress",
-        type: "address",
-      },
-    ],
-    name: "deleteWhitelist",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     stateMutability: "nonpayable",
     type: "constructor",
@@ -2782,6 +2702,74 @@ export const whitelistContractAbi = [
     ],
     name: "OwnershipTransferred",
     type: "event",
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum HCProjectWhitelists.Phase",
+        name: "phase",
+        type: "uint8",
+      },
+      {
+        internalType: "address[]",
+        name: "toAddAddresses",
+        type: "address[]",
+      },
+    ],
+    name: "addToWhitelist",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "admin",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum HCProjectWhitelists.Phase",
+        name: "phase",
+        type: "uint8",
+      },
+      {
+        internalType: "address",
+        name: "_whitelistAddress",
+        type: "address",
+      },
+    ],
+    name: "deleteWhitelist",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
   },
   {
     inputs: [],
@@ -2842,38 +2830,6 @@ export const whitelistContractAbi = [
         type: "address",
       },
     ],
-    name: "admin",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "owner",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
     name: "whitelists",
     outputs: [
       {
@@ -2886,24 +2842,14 @@ export const whitelistContractAbi = [
         name: "whitelist2",
         type: "bool",
       },
-      {
-        internalType: "bool",
-        name: "public1",
-        type: "bool",
-      },
-      {
-        internalType: "bool",
-        name: "public2",
-        type: "bool",
-      },
     ],
     stateMutability: "view",
     type: "function",
   },
 ];
 
-const whaleyContractAddress = "0x45A2C00664f8FaFb8cDC683e2Da2614f341750b9";
-const whitelistContractAddress = "0x4Fd062F6D5ED3d533E8d7B54670B5FD195168cff";
+const whaleyContractAddress = "0x670fF0B2f300D2c28f01dA452AeFc195EEAc3924";
+const whitelistContractAddress = "0x6Dae4db07314A470965a43F1B5eB0Ee57a6255ba";
 
 const test1ContractAddress = "0x80d37d8bFf8C5956201d2aF9b5522E838663be40";
 const test2ContractAddress = "0x99148f6F8b94248487178B48Fcb4A2DE6Dad2f08";
