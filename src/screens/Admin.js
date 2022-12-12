@@ -124,6 +124,7 @@ export const Admin = () => {
       if (!nftContract) {
         return;
       }
+
       const response = await nftContract.methods.isRevealed().call();
       if (response) setIsRevealed("Revealed");
       else setIsRevealed("notReveal");
@@ -137,7 +138,10 @@ export const Admin = () => {
       if (!nftContract) {
         return;
       }
-
+      if (!account) {
+        alert("지갑 연결 해주세요");
+        return;
+      }
       const alch = createAlchemyWeb3(alchemy_privateKeyHttps);
       alch.eth.getMaxPriorityFeePerGas().then((tip) => {
         alch.eth.getBlock("pending").then((block) => {
