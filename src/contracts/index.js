@@ -2927,6 +2927,17 @@ export const web3 = new Web3(window.ethereum);
 //   test1ContractAddress
 // );
 
+export const getContractAddress = (mode) => {
+  if (mode === "test1") {
+    return test1ContractAddress;
+  }
+  if (mode === "test2") {
+    return test2ContractAddress;
+  }
+  if (mode === "mint") {
+    return whaleyContractAddress;
+  }
+};
 export const whaleyContract = (mode) => {
   if (mode === "test1") {
     return new web3.eth.Contract(

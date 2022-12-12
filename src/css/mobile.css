@@ -3,7 +3,7 @@
     display: none;
   }
   .MintPage__Main-container {
-    /* display: none; */
+    display: none;
   }
 
   .Mobile_Home {
@@ -76,6 +76,95 @@
   .Mobile-MinPage__MintWrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .Mobile-MintPage__MintInfo {
+    /* position: absolute; */
+    /* background-color: aqua; */
+    /* left: 200px; */
+    /* top: 100px; */
+    margin-top: 20px;
+    /* width: 600px; */
+
+    /* margin-top: 100px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "GmarketSansTTFBold", serif;
+    color: white;
+  }
+
+  .Mobile-MintPage__MintInfo-AmountFont {
+    font-size: 30px;
+  }
+
+  .Mobile-MintPage__MintInfo-RemainingSupply {
+    /* margin-top: 0px; */
+    font-size: 60px;
+  }
+
+  .Mobile-MintPage__MintInfo-price {
+    font-size: 20px;
+  }
+
+  .Mobile-MintPage__MintInfo-price_grey {
+    font-weight: 100;
+    opacity: 0.5;
+    font-size: 15px;
+  }
+
+  .Mobile-MintPage__MintAmountBox {
+    /* position: absolute; */
+    /* top: 350px; */
+    /* left: 690px; */
+    margin-top: 20px;
+    display: flex;
+    /* background-color: gray; */
+    width: 220px;
+    padding: 20px 5px;
+
+    justify-content: space-around;
+    color: white;
+    border-radius: 20px;
+  }
+
+  .Mobile-MintPage__MintAmount-button {
+    position: relative;
+    background-color: rgba(93, 90, 90, 0.543);
+
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .Mobile-MintPage__MintAmount-amount {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .Mobile-MintPage__MintButton-wrapper {
+    /* position: absolute;
+    top: 500px;
+    left: 700px; */
+    /* background-color: gray; */
+    width: 180px;
+    height: 150px;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    /* background-color: beige; */
+  }
+
+  .Mobile-MintPage__MintButton-wrapper img {
+    width: 200px;
+    height: 170px;
   }
 
   .WalletConnect {

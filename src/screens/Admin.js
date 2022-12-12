@@ -1,6 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { whaleyContract, whaleyWhitelistContract } from "../contracts/index";
+import {
+  whaleyContract,
+  whaleyWhitelistContract,
+  getContractAddress,
+} from "../contracts/index";
 import WalletConnect from "../components/WalletConnect";
 import Button from "react-bootstrap/Button";
 const Phase = {
@@ -22,18 +26,35 @@ export const Admin = () => {
   const [currentStageStr, setCurrentStageStr] = useState("Init");
   const [nftContract, setNftContract] = useState();
   const [nftWhitelistContract, setNftWhitelistContract] = useState();
+  const [contractAddress, setContractAddress] = useState("");
+  const [nftCount, setNftCount] = useState(0);
+
+  const getNftCount = async () => {
+    try {
+      if (!nftContract) {
+        return;
+      }
+      const response = await nftContract.methods.totalSupply().call();
+      setNftCount(Number(response));
+    } catch (error) {
+      console.log("getIsRevealed", error);
+    }
+  };
 
   const setContract = () => {
     const stage = "test2"; //test
     if (stage === "test1") {
       setNftContract(whaleyContract("test1"));
       setNftWhitelistContract(whaleyWhitelistContract("test1"));
+      setContractAddress(getContractAddress("test1"));
     } else if (stage === "test2") {
       setNftContract(whaleyContract("test2"));
       setNftWhitelistContract(whaleyWhitelistContract("test2"));
+      setContractAddress(getContractAddress("test2"));
     } else {
       setNftContract(whaleyContract("mint"));
       setNftWhitelistContract(whaleyWhitelistContract("mint"));
+      setContractAddress(getContractAddress("mint"));
     }
   };
 
@@ -140,6 +161,8 @@ export const Admin = () => {
     <div className="Admin">
       <WalletConnect setAccountFunction={setAccountFunction}></WalletConnect>
       <div className="Admin-maincontainer">
+        <div> Contract Address : {contractAddress}</div>
+        <div> totalSupply : {nftCount} </div>
         <div> 민팅 단계</div>
         <div>
           Init - 확정화리 - 경쟁화리 대기 - 경쟁화리 - 퍼블릭1차 대기 -

@@ -383,7 +383,7 @@ export const MintPage = (props) => {
           </div>
         </div>
       </div>
-      {/* <div className="Mobile_MintPage__Main-container">
+      <div className="Mobile_MintPage__Main-container">
         <div
           className="Mobile_MintPage__Mint-container"
           style={{ backgroundImage: "url(./mobile_mint_background.png)" }}
@@ -404,6 +404,8 @@ export const MintPage = (props) => {
                   PER{" "}
                 </span>
                 <span>1 NFT </span>
+              </div>
+              <div>
                 <span className="Mobile-MintPage__MintInfo-price_grey">
                   (Excluding gas fees)
                 </span>
@@ -431,11 +433,11 @@ export const MintPage = (props) => {
               className="Mobile-MintPage__MintButton-wrapper"
               onClick={onClickMint}
             >
-              <img src="minting_button.png" alt="minting_button"></img>
+              <img src="minting_button_mobile.png" alt="minting_button"></img>
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };
