@@ -28,7 +28,52 @@ export const Admin = () => {
   const [nftWhitelistContract, setNftWhitelistContract] = useState();
   const [contractAddress, setContractAddress] = useState("");
   const [nftCount, setNftCount] = useState(0);
+  const [whitelist1Price, setWhitelist1Price] = useState("0");
+  const [whitelist2Price, setWhitelist2Price] = useState("0");
+  const [public1Price, setPublic1Price] = useState("0");
+  const [public2Price, setPublic2Price] = useState("0");
+  const [textWhitelist1Price, setTextWhitelist1Price] = useState("");
+  const [textWhitelist2Price, setTextWhitelist2Price] = useState("");
+  const [textPublic1Price, setTextPublic1Price] = useState("");
+  const [textPublic2Price, setTextPublic2Price] = useState("");
+  const [textDepositAddress, setTextDepositAddress] = useState("");
+  const [mintDepositAddress, setMintDepositAddress] = useState("");
 
+  const getPrices = async () => {
+    try {
+      if (!nftContract) {
+        return;
+      }
+
+      const _whitelist1Price = await nftContract.methods
+        .mintPriceList(Phase.WHITELIST1)
+        .call();
+
+      const viewWhitelist1Price = _whitelist1Price / 10 ** 18;
+
+      const _whitelist2Price = await nftContract.methods
+        .mintPriceList(Phase.WHITELIST2)
+        .call();
+      const viewWhitelist2Price = _whitelist2Price / 10 ** 18;
+
+      const _public1Price = await nftContract.methods
+        .mintPriceList(Phase.PUBLIC1)
+        .call();
+      const viewPublic1Price = _public1Price / 10 ** 18;
+
+      const _public2Price = await nftContract.methods
+        .mintPriceList(Phase.PUBLIC2)
+        .call();
+      const viewPublic2Price = _public2Price / 10 ** 18;
+
+      setWhitelist1Price(viewWhitelist1Price);
+      setWhitelist2Price(viewWhitelist2Price);
+      setPublic1Price(viewPublic1Price);
+      setPublic2Price(viewPublic2Price);
+    } catch (error) {
+      console.log("getPrices", error);
+    }
+  };
   const getNftCount = async () => {
     try {
       if (!nftContract) {
@@ -37,7 +82,19 @@ export const Admin = () => {
       const response = await nftContract.methods.totalSupply().call();
       setNftCount(Number(response));
     } catch (error) {
-      console.log("getIsRevealed", error);
+      console.log("getNftCount", error);
+    }
+  };
+
+  const getDepositAddress = async () => {
+    try {
+      if (!nftContract) {
+        return;
+      }
+      const response = await nftContract.methods.mintDepositAddress().call();
+      setMintDepositAddress(response);
+    } catch (error) {
+      console.log("getDepositAddress", error);
     }
   };
 
@@ -132,23 +189,104 @@ export const Admin = () => {
     setAccount(_address);
   };
 
-  const getWhitelists = (whitelistNum) => {
+  const setWhitelists = async (whitelistNum) => {
     let whitelists;
+    let currentPhase;
     if (whitelistNum === 1) {
       whitelists = document.querySelector(".addWhitelists_1").value;
+      currentPhase = Phase.WHITELIST1;
     }
     if (whitelistNum === 2) {
       whitelists = document.querySelector(".addWhitelists_2").value;
+      currentPhase = Phase.WHITELIST2;
     }
 
-    console.log(whitelists);
+    // console.log(whitelists);
     const arr = whitelists.split("\n");
-    console.log(arr);
+    // console.log(arr);
+    try {
+      if (!nftContract) {
+        return;
+      }
+
+      nftWhitelistContract.methods.addToWhitelist(currentPhase, arr).send({
+        from: account,
+      });
+    } catch (error) {
+      console.log("setWhitelists", error);
+    }
+  };
+
+  const onChangeWhitelist1Price = (e) => {
+    setTextWhitelist1Price(e.target.value);
+  };
+  const onChangeWhitelist2Price = (e) => {
+    setTextWhitelist2Price(e.target.value);
+  };
+  const onChangePublic1Price = (e) => {
+    setTextPublic1Price(e.target.value);
+  };
+  const onChangePublic2Price = (e) => {
+    setTextPublic2Price(e.target.value);
+  };
+
+  const onChangeDepositAddress = (e) => {
+    setTextDepositAddress(e.target.value);
+  };
+
+  const setPrice = async (_phase) => {
+    if (!nftContract) {
+      return;
+    }
+    console.log(_phase);
+    return;
+    let _price;
+    if (_phase === Phase.WHITELIST1) {
+      _price = textWhitelist1Price * 10 ** 18;
+    } else if (_phase === Phase.WHITELIST2) {
+      _price = textWhitelist2Price * 10 ** 18;
+    } else if (_phase === Phase.PUBLIC1) {
+      _price = textPublic1Price * 10 ** 18;
+    } else if (_phase === Phase.PUBLIC2) {
+      _price = textPublic2Price * 10 ** 18;
+    } else {
+      alert("가격 설정 할 수 있는 Phase가 아닙니다.");
+      return;
+    }
+
+    try {
+      const response = await nftContract.methods
+        .setMintPrice(_phase, _price.toString())
+        .send({
+          from: account,
+        });
+      if (response) getPrices();
+    } catch (error) {
+      console.log("setPrice", error);
+    }
+  };
+
+  const setDepositAddress = async () => {
+    // console.log(textDepositAddress);
+    try {
+      const response = await nftContract.methods
+        .setMintDeposit(textDepositAddress.toString())
+        .send({
+          from: account,
+        });
+      if (response) getDepositAddress();
+    } catch (error) {
+      console.log("setDepositAddress", error);
+    }
   };
 
   useEffect(() => {
     getIsRevealed();
     getCurrentStage();
+    getPrices();
+    getNftCount();
+    getDepositAddress();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nftContract]);
 
@@ -162,7 +300,7 @@ export const Admin = () => {
       <WalletConnect setAccountFunction={setAccountFunction}></WalletConnect>
       <div className="Admin-maincontainer">
         <div> Contract Address : {contractAddress}</div>
-        <div> totalSupply : {nftCount} </div>
+
         <div> 민팅 단계</div>
         <div>
           Init - 확정화리 - 경쟁화리 대기 - 경쟁화리 - 퍼블릭1차 대기 -
@@ -189,6 +327,101 @@ export const Admin = () => {
             Reveal!
           </Button>
         </div>
+        <div> totalSupply : {nftCount} </div>
+        <div style={{ flexDirection: "column", alignItems: "center" }}>
+          <div style={{ fontWeight: "bold", fontSize: "20px" }}>
+            Price lists
+          </div>
+          <div className="Admin-setPrice-container">
+            {" "}
+            whitelist1 : {whitelist1Price} matic{" "}
+            <input
+              onChange={onChangeWhitelist1Price}
+              value={textWhitelist1Price}
+              type="number"
+              placeholder="가격 입력(Matic 단위)"
+            ></input>
+            <Button
+              // className=""
+              variant="success"
+              onClick={() => {
+                setPrice(Phase.WHITELIST1);
+              }}
+            >
+              set Whitelist1 Price
+            </Button>
+          </div>
+          <div className="Admin-setPrice-container">
+            {" "}
+            whitelist2 : {whitelist2Price} matic{" "}
+            <input
+              onChange={onChangeWhitelist2Price}
+              value={textWhitelist2Price}
+              type="number"
+              placeholder="가격 입력(Matic 단위)"
+            ></input>
+            <Button
+              // className=""
+              variant="success"
+              onClick={() => {
+                setPrice(Phase.WHITELIST2);
+              }}
+            >
+              set Whitelist2 Price
+            </Button>
+          </div>
+          <div className="Admin-setPrice-container">
+            {" "}
+            public1 : {public1Price} matic{" "}
+            <input
+              onChange={onChangePublic1Price}
+              value={textPublic1Price}
+              type="number"
+              placeholder="가격 입력(Matic 단위)"
+            ></input>
+            <Button
+              // className=""
+              variant="success"
+              onClick={() => {
+                setPrice(Phase.PUBLIC1);
+              }}
+            >
+              set Public1 Price
+            </Button>
+          </div>
+          <div className="Admin-setPrice-container">
+            {" "}
+            public2 : {public2Price} matic{" "}
+            <input
+              onChange={onChangePublic2Price}
+              value={textPublic2Price}
+              type="number"
+              placeholder="가격 입력(Matic 단위)"
+            ></input>
+            <Button
+              // className=""
+              variant="success"
+              onClick={() => {
+                setPrice(Phase.PUBLIC2);
+              }}
+            >
+              set Public2 Price
+            </Button>
+          </div>
+        </div>
+        <div>민팅 자금 받을 지갑 : {mintDepositAddress}</div>
+        <div>
+          <input
+            onChange={onChangeDepositAddress}
+            value={textDepositAddress}
+            type="text"
+            placeholder="지갑주소 입력(ex 0x929..33d)"
+          ></input>
+          <Button variant="success" onClick={setDepositAddress}>
+            민팅 자금 받을 지갑 설정하기
+          </Button>
+        </div>
+
         <div>
           add whitelist1
           <textarea className="addWhitelists addWhitelists_1"></textarea>
@@ -196,7 +429,7 @@ export const Admin = () => {
             className="Admin_Button"
             variant="success"
             onClick={() => {
-              getWhitelists(1);
+              setWhitelists(1);
             }}
           >
             Add whitelist1
@@ -209,7 +442,7 @@ export const Admin = () => {
             className="Admin_Button"
             variant="success"
             onClick={() => {
-              getWhitelists(2);
+              setWhitelists(2);
             }}
           >
             Add whitelist1

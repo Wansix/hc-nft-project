@@ -25,3 +25,11 @@
   width: 500px;
   height: 300px;
 }
+
+.Admin-setPrice-container {
+  margin-top: 12px;
+}
+
+.Admin-setPrice-container button {
+  margin-left: 10px;
+}

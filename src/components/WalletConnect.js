@@ -27,12 +27,12 @@ export const WalletConnect = (props) => {
         setViewAccount(tempViewAccount);
         props.setAccountFunction(tempAccount);
 
-        if (props.isMobile === true) {
-          console.log("mobile!");
-        } else console.log("pc!");
+        // if (props.isMobile === true) {
+        //   console.log("mobile!");
+        // } else console.log("pc!");
 
         const nodes = document.querySelectorAll(".WallectConnectImg");
-        console.log(nodes);
+        // console.log(nodes);
         if (props.isMobile === true) {
           nodes[1].style.display = "none";
         } else nodes[0].style.display = "none";

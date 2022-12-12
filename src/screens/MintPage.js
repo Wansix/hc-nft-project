@@ -108,6 +108,10 @@ export const MintPage = (props) => {
         alert("모의민팅1차 종료되었습니다.");
         return;
       }
+      if (props.stage === "test2") {
+        alert("모의민팅2차 종료되었습니다.");
+        return;
+      }
 
       if (!account) {
         alert("지갑을 연결해주세요.");
