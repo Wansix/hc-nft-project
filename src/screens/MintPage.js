@@ -133,7 +133,9 @@ export const MintPage = (props) => {
           );
         }
         if (mintPagePhase === Phase.WHITELIST2) {
-          alert("화이트리스트가 아닙니다.");
+          alert(
+            "경쟁 화이트리스트가 아닙니다.\n아쉽지만 다음 라운드 민팅에 참여해주세요."
+          );
         }
 
         return;
