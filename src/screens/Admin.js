@@ -397,7 +397,7 @@ export const Admin = () => {
           </div>
           <div className="Admin-setPrice-container">
             {" "}
-            whitelist1 : {whitelist1Price} matic{" "}
+            whitelist 확정 : {whitelist1Price} matic{" "}
             <input
               onChange={onChangeWhitelist1Price}
               value={textWhitelist1Price}
@@ -411,12 +411,12 @@ export const Admin = () => {
                 setPrice(Phase.WHITELIST1);
               }}
             >
-              set Whitelist1 Price
+              set Whitelist확정 Price
             </Button>
           </div>
           <div className="Admin-setPrice-container">
             {" "}
-            whitelist2 : {whitelist2Price} matic{" "}
+            whitelist경쟁 : {whitelist2Price} matic{" "}
             <input
               onChange={onChangeWhitelist2Price}
               value={textWhitelist2Price}
@@ -430,12 +430,12 @@ export const Admin = () => {
                 setPrice(Phase.WHITELIST2);
               }}
             >
-              set Whitelist2 Price
+              set Whitelist경쟁 Price
             </Button>
           </div>
           <div className="Admin-setPrice-container">
             {" "}
-            public1 : {public1Price} matic{" "}
+            public 1차: {public1Price} matic{" "}
             <input
               onChange={onChangePublic1Price}
               value={textPublic1Price}
@@ -449,12 +449,12 @@ export const Admin = () => {
                 setPrice(Phase.PUBLIC1);
               }}
             >
-              set Public1 Price
+              set Public 1차 Price
             </Button>
           </div>
           <div className="Admin-setPrice-container">
             {" "}
-            public2 : {public2Price} matic{" "}
+            public 2차 : {public2Price} matic{" "}
             <input
               onChange={onChangePublic2Price}
               value={textPublic2Price}
@@ -468,7 +468,7 @@ export const Admin = () => {
                 setPrice(Phase.PUBLIC2);
               }}
             >
-              set Public2 Price
+              set Public 2차 Price
             </Button>
           </div>
         </div>
