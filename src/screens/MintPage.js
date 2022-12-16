@@ -127,7 +127,15 @@ export const MintPage = (props) => {
 
       const isWhiteList = await checkWhiteLists();
       if (isWhiteList === false) {
-        alert("화이트리스트가 아닙니다.");
+        if (mintPagePhase === Phase.WHITELIST1) {
+          alert(
+            "확정 화이트리스트가 아닙니다.\n아쉽지만 다음 라운드 민팅에 참여해주세요."
+          );
+        }
+        if (mintPagePhase === Phase.WHITELIST2) {
+          alert("화이트리스트가 아닙니다.");
+        }
+
         return;
       }
 
