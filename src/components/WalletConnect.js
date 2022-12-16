@@ -50,6 +50,11 @@ export const WalletConnect = (props) => {
   };
 
   useEffect(() => {
+    if (props.WhitelistCheck === true) {
+      document
+        .querySelector(".WalletConnect")
+        .classList.add("walletConnect-whitelistCheck");
+    }
     if (!account) {
       console.log("can not connect", account);
       return;

@@ -1,0 +1,51 @@
+.WhitelistCheck {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+
+.WhitelistCheck-maincontainer {
+  position: relative;
+  background-color: black;
+  width: 1600px;
+  height: 1200px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.WhitelistCheck-contents {
+  position: absolute;
+  /* background-color: aqua; */
+  left: 400px;
+  top: 100px;
+  width: 800px;
+
+  /* margin-top: 100px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "GmarketSansTTFBold", serif;
+  color: white;
+}
+
+.WhitelistCheck-title {
+  font-size: 40px;
+}
+
+.WhitelistCheck-content {
+  font-size: 40px;
+}
+.WhitelistCheck-content1 {
+  margin-top: 100px;
+}
+
+.WhitelistCheck-content2 {
+  margin-top: 10px;
+}
+
+.walletConnect-whitelistCheck {
+  margin-top: 30px;
+  position: relative;
+  font-size: 30px;
+}

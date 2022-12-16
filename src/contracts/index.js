@@ -2848,7 +2848,7 @@ export const whitelistContractAbi = [
   },
 ];
 
-const whaleyContractAddress = "0x437099aD5C1e278F045Ca3371341f7e061f8246A";
+const whaleyContractAddress = "0xC0A93B4600E1dF2961aDBc04BE76a0A5fD1d6fCA";
 const whitelistContractAddress = "0x6Dae4db07314A470965a43F1B5eB0Ee57a6255ba";
 
 const test1ContractAddress = "0x80d37d8bFf8C5956201d2aF9b5522E838663be40";
@@ -2872,6 +2872,10 @@ export const web3 = new Web3(window.ethereum);
 //   whaleyNFTContractAbi,
 //   test1ContractAddress
 // );
+export const getBalance = async (address) => {
+  const value = await web3.eth.getBalance(address);
+  return value;
+};
 
 export const getContractAddress = (mode) => {
   if (mode === "test1") {

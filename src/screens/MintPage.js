@@ -1,6 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { whaleyContract, whaleyWhitelistContract } from "../contracts/index";
+import {
+  whaleyContract,
+  whaleyWhitelistContract,
+  getBalance,
+} from "../contracts/index";
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import WalletConnect from "../components/WalletConnect";
 import * as dotenv from "dotenv";
@@ -22,8 +26,6 @@ const Phase = {
 const WhitelistAddress = {
   WHITELIST1: 0,
   WHITELIST2: 1,
-  PUBLIC1: 2,
-  PUBLIC2: 3,
 };
 
 const addGasFee = 5000000000;
@@ -113,6 +115,11 @@ export const MintPage = (props) => {
         return;
       }
 
+      if (contractPhase === Phase.DONE) {
+        alert("민팅이 종료되었습니다.\n참여해주셔서 감사합니다!");
+        return;
+      }
+
       if (!account) {
         alert("지갑을 연결해주세요.");
         return;
@@ -147,6 +154,9 @@ export const MintPage = (props) => {
         return;
       }
 
+      const _value = await getBalance();
+      console.log("value : ", _value);
+
       //   const mintPriceWei = await web3.utils.toWei(mintPrice);
 
       const alch = createAlchemyWeb3(alchemy_privateKeyHttps);
@@ -165,7 +175,7 @@ export const MintPage = (props) => {
             })
             .then(() => {
               alert(
-                "민팅에 성공하셨습니다!\n오픈씨로 가셔서 지갑을 확인해주세요!"
+                `${mintAmount}개 민팅에 성공하셨습니다!\n오픈씨로 가셔서 지갑을 확인해주세요!`
               );
               checkRemainAmount();
             });
