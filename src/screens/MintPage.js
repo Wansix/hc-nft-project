@@ -156,6 +156,10 @@ export const MintPage = (props) => {
 
       const _value = await getBalance();
       console.log("value : ", _value);
+      if (mintPrice * mintAmount > _value) {
+        alert("Matic이 모자랍니다.");
+        return;
+      }
 
       //   const mintPriceWei = await web3.utils.toWei(mintPrice);
 
