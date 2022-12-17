@@ -26,6 +26,8 @@ const Phase = {
 const WhitelistAddress = {
   WHITELIST1: 0,
   WHITELIST2: 1,
+  PUBLIC1: 2,
+  PUBLIC2: 3,
 };
 
 const addGasFee = 5000000000;
@@ -127,7 +129,7 @@ export const MintPage = (props) => {
       await checkContractPhase();
 
       if (mintPagePhase !== contractPhase) {
-        console.log("no mint stage", mintPagePhase, contractPhase);
+        // console.log("no mint stage", mintPagePhase, contractPhase);
         alert("민팅 가능 Stage가 아닙니다.");
         return;
       }
@@ -154,10 +156,10 @@ export const MintPage = (props) => {
         return;
       }
 
-      const _value = await getBalance();
-      console.log("value : ", _value);
+      const _value = await getBalance(account);
+      // console.log("value : ", _value);
       if (mintPrice * mintAmount > _value) {
-        alert("Matic이 모자랍니다.");
+        alert("MATIC이 부족합니다.");
         return;
       }
 
@@ -294,7 +296,6 @@ export const MintPage = (props) => {
 
       // console.log(accountNFTCount, mintAmount, saleLimit);
       if (Number(accountNFTCount) + Number(mintAmount) > Number(saleLimit)) {
-        console.log("fail");
         return false;
       }
 
@@ -336,7 +337,7 @@ export const MintPage = (props) => {
   const switchChain = async () => {
     try {
       if (window.ethereum) {
-        console.log("switch Chain!");
+        // console.log("switch Chain!");
         window.ethereum
           .request({
             method: "wallet_switchEthereumChain",

@@ -17,7 +17,7 @@ export const WalletConnect = (props) => {
         const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        console.log("connect : ", accounts);
+        // console.log("connect : ", accounts);
         setAccount(accounts[0]);
 
         const tempAccount = accounts[0];
@@ -56,11 +56,11 @@ export const WalletConnect = (props) => {
         .classList.add("walletConnect-whitelistCheck");
     }
     if (!account) {
-      console.log("can not connect", account);
+      // console.log("can not connect", account);
       return;
     }
 
-    console.log(account);
+    // console.log(account);
   }, [account]);
 
   return (
