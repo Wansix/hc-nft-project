@@ -27,6 +27,7 @@ export const WhitelistCheck = () => {
 
   useEffect(() => {
     checkWhiteLists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nftWhitelistContract]);
 
   const checkWhiteLists = async () => {

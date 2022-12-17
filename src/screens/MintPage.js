@@ -8,7 +8,6 @@ import {
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import WalletConnect from "../components/WalletConnect";
 import * as dotenv from "dotenv";
-import { isMobile } from "react-device-detect";
 
 dotenv.config();
 const Phase = {

@@ -26,7 +26,6 @@ const alchemy_privateKeyHttps = process.env.REACT_APP_ALCHEMY_PRIVATE_KEY_HTTPS;
 export const Admin = () => {
   const [account, setAccount] = useState("");
   const [isRevealed, setIsRevealed] = useState("");
-  const [currentStage, setCurrentStage] = useState(0);
   const [currentStageStr, setCurrentStageStr] = useState("Init");
   const [nftContract, setNftContract] = useState();
   const [nftWhitelistContract, setNftWhitelistContract] = useState();
@@ -188,7 +187,6 @@ export const Admin = () => {
       }
       const response = await nftContract.methods.currentPhase().call();
       const _currentPhase = Number(response);
-      setCurrentStage(_currentPhase);
       setCurrentStageStr(getPhaseStr(_currentPhase));
 
       //   console.log("getCurrentStage", response);

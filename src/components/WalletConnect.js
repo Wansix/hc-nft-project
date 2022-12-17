@@ -61,6 +61,7 @@ export const WalletConnect = (props) => {
     }
 
     // console.log(account);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
 
   return (
