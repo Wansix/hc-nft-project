@@ -23,9 +23,9 @@ export const Home = () => {
               </Link>
             </div>
             <div className="Home-maincontainer__nav-button">
-              <Link to="/Mint-public1">
-                <img src="public1_button.png" alt="public1_button"></img>
-              </Link>
+              {/* <Link to="/Mint-public1"> */}
+              <img src="public1_button.png" alt="public1_button"></img>
+              {/* </Link> */}
             </div>
             <div className="Home-maincontainer__nav-button">
               <Link to="/Mint-public2">
