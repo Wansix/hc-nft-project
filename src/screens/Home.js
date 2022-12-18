@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import UtilEventMenu from "../components/UtilEventMenu";
 
 export const Home = () => {
+  const public1Alarm = () => {
+    alert(
+      "해리컴티 디스코드의 [퍼블릭1차-민팅장소] 채널을 통해 입장해주세요.\n10기 분들은 퍼블릭 2차민팅에서 뵙겠습니다!\n감사합니다!"
+    );
+  };
   return (
     <>
       <div className="Home">
@@ -22,7 +27,10 @@ export const Home = () => {
                 <img src="whitelist2_button.png" alt="whitelist2_button"></img>
               </Link>
             </div>
-            <div className="Home-maincontainer__nav-button">
+            <div
+              className="Home-maincontainer__nav-button"
+              onClick={public1Alarm}
+            >
               {/* <Link to="/Mint-public1"> */}
               <img src="public1_button.png" alt="public1_button"></img>
               {/* </Link> */}
@@ -60,7 +68,7 @@ export const Home = () => {
               </div>
             </div>
             <div className="Mobile_Home_maincontainer__button-container-row">
-              <div className="Mobile_Home__button">
+              <div className="Mobile_Home__button" onClick={public1Alarm}>
                 {/* <Link to="/Mint-public1"> */}
                 <img src="public1_button_mobile.png" alt="public1"></img>
                 {/* </Link> */}
