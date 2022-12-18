@@ -61,9 +61,9 @@ export const Home = () => {
             </div>
             <div className="Mobile_Home_maincontainer__button-container-row">
               <div className="Mobile_Home__button">
-                <Link to="/Mint-public1">
-                  <img src="public1_button_mobile.png" alt="public1"></img>
-                </Link>
+                {/* <Link to="/Mint-public1"> */}
+                <img src="public1_button_mobile.png" alt="public1"></img>
+                {/* </Link> */}
               </div>
               <div className="Mobile_Home__button">
                 <Link to="/Mint-public2">
