@@ -7,6 +7,12 @@ import UtilEvent from "./screens/UtilEvent";
 import TestHome from "./screens/TestHome";
 import Admin from "./screens/Admin";
 import WhitelistCheck from "./screens/WhitelistCheck";
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
+const public1_url = process.env.REACT_APP_PUBLIC_SALE1_URL;
+// console.log(public1_url);
 
 function App() {
   return (
@@ -28,10 +34,7 @@ function App() {
             element={<MintPage stage="whitelist2" />}
           />
           {/* <Route path="/Mint-public1" element={<MintPage stage="public1" />} /> */}
-          <Route
-            path="/Mint-publicSale_Sale777"
-            element={<MintPage stage="public1" />}
-          />
+          <Route path={public1_url} element={<MintPage stage="public1" />} />
           <Route path="/Mint-public2" element={<MintPage stage="public2" />} />
           <Route path="/UtilEvent" element={<UtilEvent />} />
         </Routes>
