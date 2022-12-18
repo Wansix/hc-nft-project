@@ -27,7 +27,11 @@ function App() {
             path="/Mint-whitelist2"
             element={<MintPage stage="whitelist2" />}
           />
-          <Route path="/Mint-public1" element={<MintPage stage="public1" />} />
+          {/* <Route path="/Mint-public1" element={<MintPage stage="public1" />} /> */}
+          <Route
+            path="/Mint-publicSale_Sale777"
+            element={<MintPage stage="public1" />}
+          />
           <Route path="/Mint-public2" element={<MintPage stage="public2" />} />
           <Route path="/UtilEvent" element={<UtilEvent />} />
         </Routes>
