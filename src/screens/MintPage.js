@@ -23,10 +23,10 @@ const Phase = {
 };
 
 const WhitelistAddress = {
-  WHITELIST1: 0,
-  WHITELIST2: 1,
-  PUBLIC1: 2,
-  PUBLIC2: 3,
+  // WHITELIST1: 0,
+  // WHITELIST2: 1,
+  PUBLIC1: 0,
+  PUBLIC2: 1,
 };
 
 const addGasFee = 5000000000;
@@ -276,14 +276,14 @@ export const MintPage = (props) => {
 
       let saleLimit;
       let accountNFTCount = 0;
-      if (mintPagePhase === Phase.WHITELIST1) {
-        saleLimit = await nftContract.methods.whitelistSaleLimit().call();
-        accountNFTCount = NFTCountsList[WhitelistAddress.WHITELIST1];
-      }
-      if (mintPagePhase === Phase.WHITELIST2) {
-        saleLimit = await nftContract.methods.whitelistSaleLimit().call();
-        accountNFTCount = NFTCountsList[WhitelistAddress.WHITELIST2];
-      }
+      // if (mintPagePhase === Phase.WHITELIST1) {
+      //   saleLimit = await nftContract.methods.whitelistSaleLimit().call();
+      //   accountNFTCount = NFTCountsList[WhitelistAddress.WHITELIST1];
+      // }
+      // if (mintPagePhase === Phase.WHITELIST2) {
+      //   saleLimit = await nftContract.methods.whitelistSaleLimit().call();
+      //   accountNFTCount = NFTCountsList[WhitelistAddress.WHITELIST2];
+      // }
       if (mintPagePhase === Phase.PUBLIC1) {
         saleLimit = await nftContract.methods.public1SaleLimit().call();
         accountNFTCount = NFTCountsList[WhitelistAddress.PUBLIC1];
@@ -310,12 +310,12 @@ export const MintPage = (props) => {
         return;
       }
       let saleLimit = 1;
-      if (
-        mintPagePhase === Phase.WHITELIST1 ||
-        mintPagePhase === Phase.WHITELIST2
-      ) {
-        saleLimit = await nftContract.methods.whitelistSaleLimit().call();
-      }
+      // if (
+      //   mintPagePhase === Phase.WHITELIST1 ||
+      //   mintPagePhase === Phase.WHITELIST2
+      // ) {
+      //   saleLimit = await nftContract.methods.whitelistSaleLimit().call();
+      // }
       if (mintPagePhase === Phase.PUBLIC1) {
         saleLimit = await nftContract.methods.public1SaleLimit().call();
       }
