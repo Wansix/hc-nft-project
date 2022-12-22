@@ -2822,7 +2822,7 @@ export const whitelistContractAbi = [
   },
 ];
 //0x7E241d5528A22708f4c88E2b972b84C09Ed9DdAD old contract
-const whaleyContractAddress = "0x4360903A7e6e45811feEEbd40949bB45Ce53a5De";
+const whaleyContractAddress = "0x07A92a1935d8FeA329cd72eCB8A55d52423bB1E2";
 const whitelistContractAddress = "0x6Dae4db07314A470965a43F1B5eB0Ee57a6255ba";
 
 const test1ContractAddress = "0x80d37d8bFf8C5956201d2aF9b5522E838663be40";
