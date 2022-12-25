@@ -139,6 +139,11 @@ export const whaleyNFTContractAbi = [
         name: "_amount",
         type: "uint256",
       },
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
     ],
     name: "batchMintNFT_Owner",
     outputs: [],
@@ -146,7 +151,13 @@ export const whaleyNFTContractAbi = [
     type: "function",
   },
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
     name: "mintNFT_Owner",
     outputs: [],
     stateMutability: "nonpayable",
@@ -2822,7 +2833,7 @@ export const whitelistContractAbi = [
   },
 ];
 //0x7E241d5528A22708f4c88E2b972b84C09Ed9DdAD old contract
-const whaleyContractAddress = "0x07A92a1935d8FeA329cd72eCB8A55d52423bB1E2";
+const whaleyContractAddress = "0x8B8aD5618fa85B9Be0713732CDe5adbeF15CE1Dc";
 const whitelistContractAddress = "0x6Dae4db07314A470965a43F1B5eB0Ee57a6255ba";
 
 const test1ContractAddress = "0x80d37d8bFf8C5956201d2aF9b5522E838663be40";
