@@ -1,14 +1,15 @@
 @import "./css/home.css";
 @import "./css/mintPage.css";
-@import "./css/walletConnect.css";
 @import "./css/utilEventMenu.css";
 @import "./css/testHome.css";
 @import "./css/admin.css";
 @import "./css/whitelistCheck.css";
+@import "./css/stakingPage.css";
+@import "./css/walletConnect.css";
 
 @import "./css/mobile.css";
 
 .App {
-  background-color: black;
+  background-color: none;
   position: relative;
 }

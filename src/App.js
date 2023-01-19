@@ -3,15 +3,18 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MintPage from "./screens/MintPage";
 import Home from "./screens/Home";
+import StakePage from "./screens/StakePage";
 import UtilEvent from "./screens/UtilEvent";
 import TestHome from "./screens/TestHome";
 import Admin from "./screens/Admin";
+import StakingAdmin from "./screens/StakingAdmin";
 import WhitelistCheck from "./screens/WhitelistCheck";
 import * as dotenv from "dotenv";
 
 dotenv.config();
 
 const public1_url = process.env.REACT_APP_PUBLIC_SALE1_URL;
+const stakingAdmin = process.env.REACT_APP_STAKE_ADMIN;
 // console.log(public1_url);
 
 function App() {
@@ -19,7 +22,8 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/Stake" element={<StakePage />} />
+          <Route path={stakingAdmin} element={<StakingAdmin />} />
           <Route path="/AdminTT" element={<Admin />} />
           <Route path="/HomeTest" element={<Home />} />
           <Route path="/WhitelistCheck" element={<WhitelistCheck />} />

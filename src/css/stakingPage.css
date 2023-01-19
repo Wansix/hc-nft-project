@@ -1,0 +1,144 @@
+.StakePage__Main-container {
+  /* font-family: "GmarketSansTTFBold"; */
+}
+
+.MyNFT_view_container {
+  /* background-color: bisque; */
+
+  margin: 100px 100px;
+  margin-bottom: 0px;
+  width: 1000px;
+  min-height: 400px;
+}
+.MyNFT_viewTitle {
+  padding: 20px;
+  font-size: 25px;
+  font-weight: 700;
+  font-family: "GmarketSansTTFBold";
+}
+
+.MyNFT_viewList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+}
+
+.MyNFT_viewList_Staked {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px;
+}
+
+.NFTList__item {
+  width: 200px;
+  margin: 15px;
+}
+
+.NFTList__item {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.NFTList__item img {
+  width: 200px;
+  border-radius: 10px;
+}
+
+.NFTList__item span {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "GmarketSansTTFBold";
+  margin-top: 10px;
+}
+.NFTList__item input {
+  margin-top: 10px;
+}
+
+input[type="checkbox"] {
+  -ms-transform: scale(2); /* IE */
+
+  -moz-transform: scale(2); /* FF */
+
+  -webkit-transform: scale(2); /* Safari and Chrome */
+
+  -o-transform: scale(2); /* Opera */
+
+  padding: 10px;
+}
+
+.StakeButton-container {
+  /* background-color: aqua; */
+  /* height: 100px; */
+  display: flex;
+  justify-content: center;
+}
+
+.Stake_Button {
+  font-size: 30px;
+  padding: 15px 30px;
+  font-family: "GmarketSansTTFBold";
+}
+
+.NFTList__item:has(input[type="checkbox"]:checked) {
+  outline: 5px solid forestgreen;
+  border-radius: 10px;
+}
+
+.LicenseForm-container {
+  /* background-color: beige; */
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "GmarketSansTTFBold";
+}
+
+.LicenseFormTitle {
+  font-size: 40px;
+  margin-top: 40px;
+}
+
+.LicenseForm {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.MyNFT_views_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.StakingAdmin__Admin-container {
+  margin: 50px;
+  background-color: beige;
+}
+
+.UnstakeList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.UnstakeButton-container {
+  display: flex;
+  justify-content: center;
+}
+
+.UnstakeList-container {
+  min-height: 200px;
+}
+
+.StakeList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 50px;
+}
+
+.StakeList-container div:first-child {
+  margin-top: 20px;
+}

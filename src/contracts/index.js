@@ -2832,6 +2832,369 @@ export const whitelistContractAbi = [
     type: "function",
   },
 ];
+
+export const whaleyStakeContractAbi = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "operator",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "data",
+        type: "bytes",
+      },
+    ],
+    name: "onERC721Received",
+    outputs: [
+      {
+        internalType: "bytes4",
+        name: "",
+        type: "bytes4",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "releaseUnstake",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "OwnershipTransferred",
+    type: "event",
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "setAdmin",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_token1",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_token2",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_token3",
+        type: "uint256",
+      },
+    ],
+    name: "stake",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "transferTokenAdmin",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "unstake",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "unstakeRquest",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "admin",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "parentNFT",
+    outputs: [
+      {
+        internalType: "contract IERC721",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "stakedAddresses",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "stakeFlags",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "stakeTokens",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "token1",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "token2",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "token3",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "stakedAddressesIndex",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalStakedNum",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "unstakingPossible",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "waitUnstakeAddresses",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "waitUnstakeFlags",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "waitUnstakeNum",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+];
+
 //0x7E241d5528A22708f4c88E2b972b84C09Ed9DdAD old contract
 const whaleyContractAddress = "0x8B8aD5618fa85B9Be0713732CDe5adbeF15CE1Dc";
 const whitelistContractAddress = "0x6Dae4db07314A470965a43F1B5eB0Ee57a6255ba";
@@ -2840,6 +3203,10 @@ const test1ContractAddress = "0x80d37d8bFf8C5956201d2aF9b5522E838663be40";
 const test2ContractAddress = "0x99148f6F8b94248487178B48Fcb4A2DE6Dad2f08";
 const test1whitelistContractAddress =
   "0xbe5522b399d4A9bfaF605a975Aeb0D8604D1B28a";
+
+const whaleyNFTTestContract = "0xA03E32CDaF9314808846778E2Fb0A147e47e7141";
+
+const whaleyStakeContractAddress = "0xEDc47aFB189F8DB9b93d014E3aE3eE35994E9aCf";
 
 export const web3 = new Web3(window.ethereum);
 
@@ -2860,6 +3227,10 @@ export const web3 = new Web3(window.ethereum);
 export const getBalance = async (address) => {
   const value = await web3.eth.getBalance(address);
   return value;
+};
+
+export const getStakeContractAddress = () => {
+  return whaleyStakeContractAddress;
 };
 
 export const getContractAddress = (mode) => {
@@ -2889,6 +3260,17 @@ export const whaleyContract = (mode) => {
   if (mode === "mint") {
     return new web3.eth.Contract(whaleyNFTContractAbi, whaleyContractAddress);
   }
+};
+
+export const whaleyNFTContract = () => {
+  return new web3.eth.Contract(whaleyNFTContractAbi, whaleyNFTTestContract);
+};
+
+export const whaleyStakeContract = () => {
+  return new web3.eth.Contract(
+    whaleyStakeContractAbi,
+    whaleyStakeContractAddress
+  );
 };
 
 export const whaleyWhitelistContract = (mode) => {
