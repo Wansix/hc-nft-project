@@ -3263,7 +3263,7 @@ export const whaleyContract = (mode) => {
 };
 
 export const whaleyNFTContract = () => {
-  return new web3.eth.Contract(whaleyNFTContractAbi, whaleyNFTTestContract);
+  return new web3.eth.Contract(whaleyNFTContractAbi, whaleyContractAddress);
 };
 
 export const whaleyStakeContract = () => {
