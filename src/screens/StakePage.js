@@ -338,7 +338,9 @@ export const StakePage = () => {
           </div>
           <div className="LicenseForm-container">
             <div className="LicenseFormTitle">{licenseTitle}</div>
-            <div className="LicenseForm">{licenseLink}</div>
+            <div className="LicenseForm">
+              <a href={licenseLink}>{licenseLink}</a>
+            </div>
           </div>
         </div>
       </div>
