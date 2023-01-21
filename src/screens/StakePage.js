@@ -316,7 +316,9 @@ export const StakePage = () => {
 
   return (
     <div className="StakePage__Main-container">
-      <div className="StakePage__Stake-container">
+      <div className="StakePage__Stake-container"
+      style={{ backgroundImage: "url(./stake_background.png)" }}
+      >
         <WalletConnect
           setAccountFunction={setAccountFunction}
           isMobile={false}

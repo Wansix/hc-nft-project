@@ -2,6 +2,11 @@
   /* font-family: "GmarketSansTTFBold"; */
 }
 
+.StakePage__Stake-container{
+  width: 1600px;
+  height: 1200px;
+}
+
 .MyNFT_view_container {
   /* background-color: bisque; */
 
