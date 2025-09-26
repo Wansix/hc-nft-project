@@ -1,4 +1,5 @@
 # 🐋 Whaley HC NFT Project
+<img width="1648" height="1698" alt="image" src="https://github.com/user-attachments/assets/09ea1991-03a6-4453-b6ba-4a103a412768" />
 
 > **Web3 기반 NFT 민팅 및 스테이킹 플랫폼**
 
