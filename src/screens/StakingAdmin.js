@@ -4,8 +4,8 @@ import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import {
   whaleyStakeContract,
-  whaleyNFTContract,
-  getStakeContractAddress,
+  // whaleyNFTContract, // 사용하지 않음
+  // getStakeContractAddress, // 사용하지 않음
 } from "../contracts/index";
 
 export const StakingAdmin = () => {
@@ -101,6 +101,7 @@ export const StakingAdmin = () => {
 
   useEffect(() => {
     getView();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
 
   useEffect(() => {

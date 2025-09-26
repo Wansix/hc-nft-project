@@ -3204,7 +3204,7 @@ const test2ContractAddress = "0x99148f6F8b94248487178B48Fcb4A2DE6Dad2f08";
 const test1whitelistContractAddress =
   "0xbe5522b399d4A9bfaF605a975Aeb0D8604D1B28a";
 
-const whaleyNFTTestContract = "0xA03E32CDaF9314808846778E2Fb0A147e47e7141";
+// const whaleyNFTTestContract = "0xA03E32CDaF9314808846778E2Fb0A147e47e7141"; // 사용하지 않음
 
 const whaleyStakeContractAddress = "0xEDc47aFB189F8DB9b93d014E3aE3eE35994E9aCf";
 

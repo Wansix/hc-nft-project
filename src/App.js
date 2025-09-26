@@ -5,7 +5,7 @@ import MintPage from "./screens/MintPage";
 import Home from "./screens/Home";
 import StakePage from "./screens/StakePage";
 import UtilEvent from "./screens/UtilEvent";
-import TestHome from "./screens/TestHome";
+// import TestHome from "./screens/TestHome"; // 사용하지 않음
 import Admin from "./screens/Admin";
 import StakingAdmin from "./screens/StakingAdmin";
 import WhitelistCheck from "./screens/WhitelistCheck";

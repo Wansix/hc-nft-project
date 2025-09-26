@@ -303,6 +303,7 @@ export const StakePage = () => {
 
   useEffect(() => {
     getView();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
 
   useEffect(() => {
