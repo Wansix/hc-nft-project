@@ -20,6 +20,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/Stake" element={<StakePage />} />
           <Route path={stakingAdmin} element={<StakingAdmin />} />
           <Route path="/AdminTT" element={<Admin />} />
