@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import * as dotenv from "dotenv";
-
-dotenv.config();
+// dotenv는 브라우저에서 자동으로 .env 파일을 로드하므로 import 불필요
 
 export const WalletConnect = (props) => {
   const [account, setAccount] = useState("");

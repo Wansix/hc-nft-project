@@ -7,9 +7,7 @@ import {
 } from "../contracts/index";
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import WalletConnect from "../components/WalletConnect";
-import * as dotenv from "dotenv";
-
-dotenv.config();
+// dotenv는 브라우저에서 자동으로 .env 파일을 로드하므로 import 불필요
 const Phase = {
   INIT: 0,
   WHITELIST1: 1,

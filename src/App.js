@@ -9,9 +9,7 @@ import TestHome from "./screens/TestHome";
 import Admin from "./screens/Admin";
 import StakingAdmin from "./screens/StakingAdmin";
 import WhitelistCheck from "./screens/WhitelistCheck";
-import * as dotenv from "dotenv";
-
-dotenv.config();
+// dotenv는 브라우저에서 자동으로 .env 파일을 로드하므로 import 불필요
 
 const public1_url = process.env.REACT_APP_PUBLIC_SALE1_URL;
 const stakingAdmin = process.env.REACT_APP_STAKE_ADMIN;

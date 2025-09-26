@@ -8,9 +8,7 @@ import {
 } from "../contracts/index";
 import Button from "react-bootstrap/Button";
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
-import * as dotenv from "dotenv";
-
-dotenv.config();
+// dotenv는 브라우저에서 자동으로 .env 파일을 로드하므로 import 불필요
 
 const addGasFee = 5000000000;
 
