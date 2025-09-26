@@ -7,6 +7,10 @@
   NPM_VERSION = "9"
   NODE_OPTIONS = "--openssl-legacy-provider"
 
+# 최신 빌드 이미지 사용
+[build.image]
+  name = "ubuntu-22.04"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
