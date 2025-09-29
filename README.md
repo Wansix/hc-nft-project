@@ -6,6 +6,7 @@ Whaley HC NFT 프로젝트는 Polygon 블록체인을 기반으로 한 NFT 민�
 
 ## 🌐 Live Demo
 
+- **🎯 Stake NFT**: [https://hc-nft-project.netlify.app/Stake](https://hc-nft-project.netlify.app/Stake)
 - **OpenSea Collection**: [https://opensea.io/collection/whaley-hc](https://opensea.io/collection/whaley-hc)
 
 ## ✨ 주요 기능
