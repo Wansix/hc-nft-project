@@ -315,32 +315,34 @@ export const StakePage = () => {
 
   return (
     <div className="StakePage__Main-container">
-      <div className="StakePage__Stake-container"
-      style={{ backgroundImage: "url(./stake_background.png)" }}
-      >
-        <WalletConnect
-          setAccountFunction={setAccountFunction}
-          isMobile={false}
-        ></WalletConnect>
+      <div className="StakePage__Stake-container">
+        <div className="StakePage__Content-container"
+        style={{ backgroundImage: "url(./stake_background.png)" }}
+        >
+          <WalletConnect
+            setAccountFunction={setAccountFunction}
+            isMobile={false}
+          ></WalletConnect>
 
-        <div className="MyNFT_views_container">
-          <div className="MyNFT_view_container">
-            <div className="MyNFT_viewTitle">{viewTitle}</div>
-            <div className="MyNFT_viewList">{NFTList}</div>
-          </div>
-          <div className="StakeButton-container">
-            <Button
-              className="Stake_Button"
-              variant="success"
-              onClick={onClickStake}
-            >
-              {buttonTitle}
-            </Button>
-          </div>
-          <div className="LicenseForm-container">
-            <div className="LicenseFormTitle">{licenseTitle}</div>
-            <div className="LicenseForm">
-              <a href={licenseLink}>{licenseLink}</a>
+          <div className="MyNFT_views_container">
+            <div className="MyNFT_view_container">
+              <div className="MyNFT_viewTitle">{viewTitle}</div>
+              <div className="MyNFT_viewList">{NFTList}</div>
+            </div>
+            <div className="StakeButton-container">
+              <Button
+                className="Stake_Button"
+                variant="success"
+                onClick={onClickStake}
+              >
+                {buttonTitle}
+              </Button>
+            </div>
+            <div className="LicenseForm-container">
+              <div className="LicenseFormTitle">{licenseTitle}</div>
+              <div className="LicenseForm">
+                <a href={licenseLink}>{licenseLink}</a>
+              </div>
             </div>
           </div>
         </div>

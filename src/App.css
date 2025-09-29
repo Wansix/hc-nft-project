@@ -10,6 +10,10 @@
 @import "./css/mobile.css";
 
 .App {
-  background-color: none;
+  background-color: transparent;
   position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }

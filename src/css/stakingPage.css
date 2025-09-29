@@ -3,16 +3,26 @@
 }
 
 .StakePage__Stake-container{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.StakePage__Content-container {
   width: 1600px;
-  height: 1200px;
+  min-height: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .MyNFT_view_container {
-  /* background-color: bisque; */
-
-  margin: 100px 100px;
-  margin-bottom: 0px;
-  width: 1000px;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 1200px;
   min-height: 400px;
 }
 .MyNFT_viewTitle {
@@ -23,9 +33,11 @@
 }
 
 .MyNFT_viewList {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
   padding: 40px;
+  justify-items: center;
 }
 
 .MyNFT_viewList_Staked {
@@ -36,13 +48,10 @@
 
 .NFTList__item {
   width: 200px;
-  margin: 15px;
-}
-
-.NFTList__item {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
+  margin: 0;
 }
 
 .NFTList__item img {
